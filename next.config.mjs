@@ -3,7 +3,7 @@ const nextConfig = {
     images: {
         remotePatterns: [{
             protocol: 'https',
-            hostname: 'api.rightwellton.az',
+            hostname: 'irtmac.rightwellton.az',
             port: '',
             pathname: '/storage/**',
         }, ],
