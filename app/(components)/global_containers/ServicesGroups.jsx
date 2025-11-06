@@ -2,7 +2,7 @@ import ServiceItem from "../containers/Xidmetler/ServiceItem";
 
 const ServicesGroups = ({ data, params, readmore, news }) => {
   return (
-    <div className="grid grid-cols-12 gap-6 mt-10">
+    <div className="grid grid-cols-12 gap-[24px] mt-[40px]">
       {data &&
         data?.map((cur, i) => {
           return (

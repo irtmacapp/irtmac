@@ -261,8 +261,8 @@ const Header = ({ params, data_translate, data_footer }) => {
         className="mobile-menu-overlay overflow-x-hidden block fixed left-0 top-0 bottom-0 right-0 z-[100] overlay "
       />
       <header
-        className={` w-full py-[46px]  rounded-br-[20px] rounded-bl-[20px]  top-0 left-0 right-0 header-tr z-[300] bg-[#009ADE] 
-           ${scrolledFromTop ? "fixed" : ""}`}
+        className={` w-full   rounded-br-[20px] rounded-bl-[20px]  top-0 left-0 right-0 header-tr z-[300] bg-[#009ADE] 
+           ${scrolledFromTop ? "fixed py-[26px]" : "py-[46px]"}`}
       >
         <MaxWidth>
           <nav className="  flex justify-between  ">

@@ -59,28 +59,29 @@ export default async function page({ params }) {
       data_translate={data_translate}
     >
       <FirstComponent data={data_main?.slayder_translate} />
-      <section className="max-w-[1580px]  2xl:max-w-[1380px] xl:max-w-[1150px] 3xl:px-16 xl:px-8 m-auto lg:px-4 ">
-        <HomeLogos data={data_main?.partnyorlar} />
-      </section>
-      <div className="container m-auto lg:max-w-full 0 lg:px-4">
-        <Counters data={data_main?.statistika_translate} />
-      </div>
-      <HomeVideo data={data_main?.video_bolmnesi} />
-      <Appeal data={data_main?.xidmetler} data_translate={data_translate} />
+      <HomeLogos data={data_main?.partnyorlar} />
+
+      <Counters data={data_main?.statistika_translate} />
+
+      <HomeVideo
+        data={data_main?.video_bolmnesi}
+        params={params?.code}
+        readmore={data_translate?.readmore}
+      />
+
       <HomeServices
         params={params}
         data={data_main?.xidmetler}
         data_translate={data_translate}
       />
-      <div className="mb-10">
-        <HomeNews
-          data={data_main?.xeberler}
-          blog={data_translate?.blog}
-          params={params}
-          showmore={data_translate?.showmore}
-          count1={data_translate?.count1}
-        />
-      </div>
+      <HomeNews
+        data={data_main?.xeberler}
+        blog={data_translate?.blog}
+        params={params}
+        showmore={data_translate?.showmore}
+        count1={data_translate?.count1}
+      />
+      <Appeal data={data_main?.xidmetler} data_translate={data_translate} />
     </MainLayout>
   );
 }

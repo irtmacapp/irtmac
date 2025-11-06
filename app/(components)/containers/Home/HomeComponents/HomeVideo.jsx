@@ -1,57 +1,56 @@
-"use client";
-import ManualModal from "@/app/(components)/global_containers/ManualModal/ManualModal";
-import { useVideoModal } from "@/app/(components)/global_containers/ManualModal/useVideoModal";
-
+import MaxWidth from "@/app/(components)/MaxWidth/MaxWidth";
 import Image from "next/image";
+import Link from "next/link";
 
-const HomeVideo = ({ data }) => {
-  const { isModalOpen, handleCloseModal, currentVideoUrl, containerRef } =
-    useVideoModal();
+const HomeVideo = ({ data, params, readmore }) => {
   return (
-    <section ref={containerRef} className="mt-20">
-      <div className="grid grid-cols-12">
-        <div className="col-span-6 lg:col-span-12 bg-[#E1251B] relative pt-16 pl-16 pr-36 3xl:pl-10 3xl:pt-10 xl:pb-11 lg:pr-10">
-          <div className="flex flex-col text-white font-normal">
-            <h3 className="text-4xl 2xl:text-3xl w-[60%] 2xl:w-full">
-              {data?.title}
-            </h3>
-            <p className="pt-6">{data?.text}</p>
-          </div>
-          <div className="absolute right-[0px] top-0 w-full h-full object-cover">
-            <Image
-              src="/absolute_pic.svg"
-              alt={data?.text}
-              width={1000}
-              height={1000}
-              priority
-              className=" h-full w-full mix-blend-plus-lighter "
-            />
+    <section className="mt-[80px]">
+      <MaxWidth>
+        <div className="bg-[#002856] py-[40px] px-[100px] rounded-[30px]">
+          <div className="grid grid-cols-12 ">
+            <div className="col-span-3 flex  ">
+              <div className="flex flex-col justify-center items-center">
+                <Image
+                  width={136}
+                  height={136}
+                  alt={data?.title}
+                  src={`${process.env.NEXT_PUBLIC_PICTURE}/${data?.image}`}
+                />
+                <div
+                  className="text-white font-['TTForsTrial-Bold'] text-[24px] text-center uppercase mt-[20px]"
+                  dangerouslySetInnerHTML={{ __html: `${data?.text2}` }}
+                />
+              </div>
+              <span className="flex w-[1px] h-full bg-[#0071CE] ml-[80px]" />
+            </div>
+            <div className="col-span-9 text-white ">
+              <div className="flex flex-col ">
+                <h3 className="text-white text-[38px] font-['TTForsTrial-Medium']">
+                  {data?.title}
+                </h3>
+                <div
+                  className="mt-[24px] text-white text-[14px]"
+                  dangerouslySetInnerHTML={{ __html: `${data?.text}` }}
+                />
+                <Link
+                  href={`/${params}/${data?.link}`}
+                  className="bg-[#0071ce] flex gap-[10px] items-center py-[15px] px-[26px] w-max mt-[40px] rounded-[60px] text-[14px]"
+                >
+                  {readmore}
+                  <span>
+                    <Image
+                      width={16}
+                      height={12}
+                      alt="readmore"
+                      src={"/readmore_icon.svg"}
+                    />
+                  </span>
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
-        <div className="col-span-6 lg:col-span-12">
-          <div className="relative h-full">
-            <Image
-              width={1000}
-              height={1000}
-              priority
-              src={`${process.env.NEXT_PUBLIC_PICTURE}/${data?.image}`}
-              alt={data?.title}
-              className="img-fluid h-[500px] xl:h-[300px]"
-            />
-            <span
-              data-videolink={data?.videolink}
-              className="absolute play-button top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-white  flex items-center justify-center p-2 cursor-pointer"
-            >
-              <img src="/play-circle.svg" alt={data?.title} />
-            </span>
-          </div>
-        </div>
-      </div>
-      <ManualModal
-        isOpen={isModalOpen}
-        onClose={handleCloseModal}
-        videoUrl={currentVideoUrl}
-      />
+      </MaxWidth>
     </section>
   );
 };
