@@ -2,9 +2,49 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@layer base {
+  @font-face {
+    font-family: 'TTForsTrial-Bold';
+    font-style: bold;
+    font-weight: 400;
+    font-display: swap;
+    src: url("../public/font/TTForsTrial-Bold.woff2") format('woff2');
+  }
+
+  @font-face {
+    font-family: 'TTForsTrial-ExtraBold';
+    font-style: extra-bold;
+    font-weight: 600;
+    font-display: swap;
+    src: url("../public/font/TTForsTrial-ExtraBold.woff2") format('woff2');
+  }
+
+  @font-face {
+    font-family: 'TTForsTrial-Medium';
+    font-style: medium;
+    font-weight: 300;
+    font-display: swap;
+    src: url("../public/font/TTForsTrial-Medium.woff2") format('woff2');
+  }
+
+  @font-face {
+    font-family: 'TTForsTrial-Regular';
+    font-style: regular;
+    font-weight: 200;
+    font-display: swap;
+    src: url("../public/font/TTForsTrial-Regular.woff2") format('woff2');
+  }
+
+}
+
+
+
 body,
 html {
   background: #fff;
+  font-size: 62.5%;
+  font-family: 'TTForsTrial-Regular', Arial, Helvetica, sans-serif;
 }
 
 html.active {
@@ -203,17 +243,8 @@ html.active {
   }
 }
 
-@font-face {
-  font-family: "Athelas-Bold";
-  src: url("/public/font/Athelas-Bold.woff2") format("woff2"),
-    url("/public/font/Athelas-Bold.woff") format("woff");
-  font-weight: Bold;
-  font-style: Bold;
-}
 
-.text-slider p {
-  font-family: "Athelas-Bold";
-}
+
 
 .img-fluid {
   width: 100%;
@@ -228,9 +259,6 @@ html.active {
   transition: all 0.3s linear;
 }
 
-.header-colors .child_li:hover {
-  color: #e1251b;
-}
 
 .afterhover_ul li:hover {
   background-color: #c5cee0;
@@ -273,7 +301,7 @@ html.active {
 .services_group .top,
 .services_group .bottom {
   transition: all 0.2s ease;
-  
+
 }
 
 .services_group:hover {
@@ -282,7 +310,7 @@ html.active {
 }
 
 .services_group:hover .top {
-  
+
   color: #fff;
 }
 
@@ -712,11 +740,10 @@ html.active {
   transform: rotate(330deg);
 }
 
-.header-active {
-  background-color: #003b71;
-  border: none;
+.header-tr {
+
   transition: all 0.3s linear;
-  position: sticky;
+
 }
 
 input:-webkit-autofill,
@@ -822,7 +849,7 @@ div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm {
 .clip_path {
   clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%);
   transform: rotate(-90deg);
-  background-color:#e1251b;
+  background-color: #e1251b;
 }
 
 .rc-collapse.show {

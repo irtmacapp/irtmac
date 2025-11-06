@@ -1,26 +1,27 @@
-import Image from "next/image";
+import MaxWidth from "@/app/(components)/MaxWidth/MaxWidth";
 
 const FirstComponent = ({ data }) => {
   return (
-    <section>
-      <div className="relative">
-        <Image
-          width={1000}
-          height={1000}
-          priority 
-          className="img-fluid h-[700px] 2xl:h-[500px] lg:h-[300px]"
-          src={`${process.env.NEXT_PUBLIC_PICTURE}/${data?.image}`}
-          alt={data?.created_at}
-        />
-        <div className="title absolute top-36 left-[50%] lg:top-16 translate-x-[-50%] translate-y-[-50%]">
-          <div
-            className="text-white  text-6xl font-bold 2xl:text-5xl lg:text-2xl text-center text-slider"
-            dangerouslySetInnerHTML={{
-              __html: data?.title,
-            }}
-          ></div>
+    <section className="rounded-br-[30px] rounded-bl-[30px]">
+      <MaxWidth>
+        <div className="relative">
+          <img
+            width={100000}
+            height={10000}
+            className="img-fluid h-[700px] 2xl:h-[500px] lg:h-[300px] rounded-br-[30px] rounded-bl-[30px]"
+            src={`${process.env.NEXT_PUBLIC_PICTURE}/${data?.image}`}
+            alt={data?.created_at}
+          />
+          <div className="title absolute top-[50%] right-[117px] translate-y-[-50%]">
+            <div
+              className="text-white text-right text-[60px] leading-[120%] text-slider font-['TTForsTrial-Bold']"
+              dangerouslySetInnerHTML={{
+                __html: `${data?.title}`,
+              }}
+            ></div>
+          </div>
         </div>
-      </div>
+      </MaxWidth>
     </section>
   );
 };

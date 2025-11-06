@@ -1,8 +1,10 @@
-import { useEffect, useState, useCallback } from "react";
-import { useTranslation } from "react-i18next";
-import { useRouter, usePathname } from "next/navigation";
+import { FaAngleDown } from "react-icons/fa6";
+import { useEffect, useState } from "react";
 
-const Lang = ({ toggle, switchLang, langs }) => {
+import { useRouter, usePathname } from "next/navigation";
+import Image from "next/image";
+
+const Lang = ({ toggle, switchLang, langs, scrolledFromTop }) => {
   const [language, setLanguage] = useState("az");
   const [selectedLangs, setSelectedLangs] = useState([]);
   const router = useRouter();
@@ -11,13 +13,13 @@ const Lang = ({ toggle, switchLang, langs }) => {
   // URL'den veya LocalStorage'dan dili belirle
   useEffect(() => {
     const pathLang = pathname.split("/")[1];
-    const savedLang = localStorage.getItem("i18nextLng") || "az";
+    const savedLang = localStorage.getItem("irtmac") || "az";
     const validLang = langs.includes(pathLang) ? pathLang : savedLang;
 
     if (validLang !== language) {
       setLanguage(validLang);
 
-      localStorage.setItem("i18nextLng", validLang);
+      localStorage.setItem("irtmac", validLang);
     }
   }, [pathname, language, langs]);
 
@@ -29,7 +31,7 @@ const Lang = ({ toggle, switchLang, langs }) => {
   // Dil değiştir ve URL'yi güncelle
   const langSwitcher = async (lang) => {
     setLanguage(lang);
-    localStorage.setItem("i18nextLng", lang);
+    localStorage.setItem("irtmac", lang);
 
     // URL'deki mevcut path'i koruyarak sadece dili değiştir
     const currentPath = pathname.split("/").slice(2).join("/") || "";
@@ -38,24 +40,36 @@ const Lang = ({ toggle, switchLang, langs }) => {
   };
 
   return (
-    <div className="relative text-black rounded-full langMenu">
+    <div className="relative text-white px-4 py-1 ">
       <div
         onClick={toggle}
         className="flex items-center cursor-pointer justify-center"
       >
-        <button className="text-black uppercase text-[15px] site_langs">
+        <button className={` capitalize text-[18px] md:text-[14px]`}>
           {language}
         </button>
+        <p className="flex pl-3">
+          <FaAngleDown className="w-[25px] h-[14px]" />
+        </p>
       </div>
       {switchLang && (
-        <div className="absolute css-box-shadow mt-6 right-[-25px] z-50 uppercase bg-[#fff] px-[18px] py-2 top-[16px] h-[90px] rounded-[20px] flex flex-col text-left items-center justify-center">
+        <div className="absolute mt-6 top-[3.2rem] left-[-19px] lg:left-[-10px] flex flex-col text-left overflow-hidden items-center justify-center bg-[#fff] box-shadow2  ">
           {selectedLangs?.map((lang, index) => (
             <button
-              className="z-[200] text-[15px] xl:text-[13px] transitions uppercase px-1 py-2 bg-white-A700 trans flex justify-center items-center"
+              className="z-[50] capitalize text-[18px] text-[#002D74] border border-[#f4f6f6] lang_border gap-[12px] n  langText xl:text-[13px] hover:bg-[--orange] services_card_link shaodo11  py-3   trans  w-[110px] flex justify-center items-center lg:w-[88px] "
               key={index}
               onClick={() => langSwitcher(lang)}
             >
               {lang}
+              <span>
+                <Image
+                  src={"/lang.svg"}
+                  width={15}
+                  height={15}
+                  className="object-cover"
+                  alt="lang"
+                />
+              </span>
             </button>
           ))}
         </div>

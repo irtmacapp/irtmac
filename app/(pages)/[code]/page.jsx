@@ -15,15 +15,12 @@ import HomeNews from "@/app/(components)/containers/Home/HomeComponents/HomeNews
 
 export async function generateMetadata({ params }) {
   const data = await fetchFooterSettings(params?.code);
-  const baseUrl = "https://rightwellton.az/";
+  const baseUrl = "https://irtmac.az/";
   const pictureBaseUrl = process.env.NEXT_PUBLIC_PICTURE;
   const logoUrl = `${pictureBaseUrl}/${data?.settings?.logo}`;
   const faviconUrl = `${pictureBaseUrl}/${data?.settings?.favicon}`;
 
   return {
-    verification: {
-      google: "AnCOamrcDNcMjUkxsrkGCYvakes0tf7rXZ1BA9rHeXo",
-    },
     title: data?.settings?.title,
     description: data?.settings?.description,
     icons: {
@@ -34,7 +31,7 @@ export async function generateMetadata({ params }) {
       title: data?.settings?.title,
       description: data?.settings?.meta_description,
       url: baseUrl,
-      siteName: "RIGHTWELLTON.AZ",
+      siteName: "irtmac.az",
       images: [
         {
           url: logoUrl, // Dinamik logo URL-i
@@ -56,36 +53,34 @@ const getData = async (params) => {
 export default async function page({ params }) {
   const { data_footer, data_translate, data_main } = await getData(params);
   return (
-    <Suspense>
-      <MainLayout
-        data_footer={data_footer}
+    <MainLayout
+      data_footer={data_footer}
+      params={params}
+      data_translate={data_translate}
+    >
+      <FirstComponent data={data_main?.slayder_translate} />
+      <section className="max-w-[1580px]  2xl:max-w-[1380px] xl:max-w-[1150px] 3xl:px-16 xl:px-8 m-auto lg:px-4 ">
+        <HomeLogos data={data_main?.partnyorlar} />
+      </section>
+      <div className="container m-auto lg:max-w-full 0 lg:px-4">
+        <Counters data={data_main?.statistika_translate} />
+      </div>
+      <HomeVideo data={data_main?.video_bolmnesi} />
+      <Appeal data={data_main?.xidmetler} data_translate={data_translate} />
+      <HomeServices
         params={params}
+        data={data_main?.xidmetler}
         data_translate={data_translate}
-      >
-        <FirstComponent data={data_main?.slayder_translate} />
-        <section className="max-w-[1580px]  2xl:max-w-[1380px] xl:max-w-[1150px] 3xl:px-16 xl:px-8 m-auto lg:px-4 ">
-          <HomeLogos data={data_main?.partnyorlar} />
-        </section>
-        <div className="container m-auto lg:max-w-full 0 lg:px-4">
-          <Counters data={data_main?.statistika_translate} />
-        </div>
-        <HomeVideo data={data_main?.video_bolmnesi} />
-        <Appeal data={data_main?.xidmetler} data_translate={data_translate} />
-        <HomeServices
+      />
+      <div className="mb-10">
+        <HomeNews
+          data={data_main?.xeberler}
+          blog={data_translate?.blog}
           params={params}
-          data={data_main?.xidmetler}
-          data_translate={data_translate}
+          showmore={data_translate?.showmore}
+          count1={data_translate?.count1}
         />
-        <div className="mb-10">
-          <HomeNews
-            data={data_main?.xeberler}
-            blog={data_translate?.blog}
-            params={params}
-            showmore={data_translate?.showmore}
-            count1={data_translate?.count1}
-          />
-        </div>
-      </MainLayout>
-    </Suspense>
+      </div>
+    </MainLayout>
   );
 }

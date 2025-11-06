@@ -10,7 +10,8 @@ import Lang from "./Lang";
 import Search from "../../global_containers/Search";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import DOMPurify from "isomorphic-dompurify";
-const Header = ({ params, data_translate }) => {
+import MaxWidth from "../../MaxWidth/MaxWidth";
+const Header = ({ params, data_translate, data_footer }) => {
   const [scrolledFromTop, setScrollTop] = useState(false);
   const [portfolio, setPortfolio] = useState([]);
   const [services, setServices] = useState([]);
@@ -33,82 +34,35 @@ const Header = ({ params, data_translate }) => {
     {
       id: 1,
       title: `${data_translate?.header_1_text}`,
-      href: `${params?.code}`,
-      subMenu: null,
+      href: `/${params?.code}`,
     },
     {
       id: 2,
       title: `${data_translate?.header_2_text}`,
-      href: null,
-      subMenu: [
-        {
-          id: 1,
-          title: `${data_translate?.header_3_text}`,
-          href: `haqqimizda`,
-        },
-        {
-          id: 2,
-          title: `${data_translate?.header_4_text}`,
-          href: `meqsed`,
-        },
-        {
-          id: 3,
-          title: `${data_translate?.header_5_text}`,
-          href: `rehber`,
-        },
-        {
-          id: 4,
-          title: `${data_translate?.header_6_text}`,
-          href: `sertifikatlar`,
-        },
-        {
-          id: 5,
-          title: `${data_translate?.header_7_text}`,
-          href: `tovsiye`,
-        },
-        {
-          id: 6,
-          title: `${data_translate?.header_8_text}`,
-          href: `faq`,
-        },
-      ],
+      href: `/${params?.code}/haqqimizda`,
     },
     {
       id: 3,
-      title: `${data_translate?.header_9_text}`,
-      href: `${params?.code}/xidmetler`,
-      subMenu: null,
+      title: `${data_translate?.header_3_text}`,
+      href: `/${params?.code}/telimler`,
     },
     {
       id: 4,
-      title: `${data_translate?.header_10_text}`,
-      href: `${params?.code}/portfolio`,
-      subMenu: null,
+      title: `${data_translate?.header_4_text}`,
+      href: `/${params?.code}/telimciler`,
     },
     {
       id: 5,
-      title: `${data_translate?.header_11_text}`,
-      href: null,
-      subMenu: [
-        {
-          id: 1,
-          title: `${data_translate?.header_12_text}`,
-          href: `kiv`,
-        },
-        {
-          id: 2,
-          title: `${data_translate?.header_13_text}`,
-          href: `blog`,
-        },
-      ],
+      title: `${data_translate?.header_5_text}`,
+      href: `/${params?.code}/media-merkezi`,
     },
     {
       id: 6,
-      subMenu: null,
-      title: `${data_translate?.header_14_text}`,
-      href: `${params?.code}/elaqe`,
+      title: `${data_translate?.header_6_text}`,
+      href: `/${params?.code}/elaqe`,
     },
   ];
+
   const handleOpen = (name) => () => {
     setOpenCategory((prev) => (prev === name ? null : name));
   };
@@ -254,291 +208,143 @@ const Header = ({ params, data_translate }) => {
       router.push(`/${params?.code}/search/?${query}`);
     }
   };
+  const pathname = usePathname();
 
   return (
     <>
+      <header className="bg-[#002D74]  py-[25px]">
+        <MaxWidth>
+          <div className="flex justify-between items-center">
+            <p className="text-white text-[14px]">
+              {data_footer?.settings?.description}
+            </p>
+            <div className="flex gap-[20px] items-center">
+              <button
+                onClick={openSearch}
+                className=" px-4 py-2  cursor-pointer "
+              >
+                <img
+                  className="w-[20px]"
+                  src="/header_search.svg"
+                  alt="search"
+                />
+              </button>
+              <div>
+                <Lang
+                  toggle={() => setOpen(!open)}
+                  langs={langs}
+                  scrolledFromTop={scrolledFromTop}
+                  switchLang={
+                    open && (
+                      <div className="absolute  mt-6 right-[-30px] top-[8px] h-[50px] z-50   flex flex-col text-left items-center justify-center ">
+                        {myLang?.map((lang, index) => (
+                          <button
+                            className={`z-[200] capitalize 0 text-[15px] xl:text-[13px]  transitions  overflow-hidden px-6 py-1 rounded-lg text-white`}
+                            key={index}
+                            onClick={() => langSwitcher(lang)}
+                          >
+                            {lang}
+                          </button>
+                        ))}
+                      </div>
+                    )
+                  }
+                />
+              </div>
+            </div>
+          </div>
+        </MaxWidth>
+      </header>
       <div
         onClick={closeMobileMenu}
         ref={overlayDiv}
         className="mobile-menu-overlay overflow-x-hidden block fixed left-0 top-0 bottom-0 right-0 z-[100] overlay "
       />
-      <div
-        className={` w-full py-[20px] 2xl:py-[15px]  top-0 left-0 right-0 z-[300] bg-[#fff] border-b-[1px]
-          border-[#C5CEE0] ${scrolledFromTop ? "header-active" : ""}`}
+      <header
+        className={` w-full py-[46px]  rounded-br-[20px] rounded-bl-[20px]  top-0 left-0 right-0 header-tr z-[300] bg-[#009ADE] 
+           ${scrolledFromTop ? "fixed" : ""}`}
       >
-        <nav className="grid grid-cols-12 3xl:place-items-center   justify-center lg:flex lg:justify-between lg:items-center max-w-[1580px]  2xl:max-w-[1480px] xl:max-w-[1380px] m-auto lg:px-4">
-          <div className="col-span-5 left  flex justify-start lg:hidden">
-            <ul className="flex items-center gap-2  uppercase font-normal header-colors 2xl:pr-[40px] xl:pr-[0px] ">
-              <li
-                onClick={openSearch}
-                className=" px-4 py-2 child_li cursor-pointer border-[2px] border-[#E9ECF4] rounded-[48px] p-[2px]"
-              >
-                <img className="w-[15px]" src="/search-blue.svg" alt="search" />
-              </li>
-              <li
-                className={`px-4 xl:px-2 2xl:px-2 child_li w-max ${
-                  activePage === `/${params?.code}`
-                    ? "text-[#E1251B] font-semibold "
-                    : ""
-                }`}
-              >
-                <Link className="w-max" href={`/${params?.code}`}>
-                  {data_translate?.header_1_text}
-                </Link>
-              </li>
-              <li className="relative px-4 2xl:px-2 parent_li ">
-                <p className="cursor-pointer">
-                  {" "}
-                  {data_translate?.header_2_text}
-                </p>
-                <ul className=" flex-col absolute z-30 capitalize afterhover_ul top-[30px]  left-0 bg-[#F7F7FA] flex w-max opacity-0 invisible">
-                  <li
-                    className={`border-b-[2px] border-[#E9ECF4]  ${
-                      activePage === `/${params?.code}/haqqimizda`
-                        ? "text-[#E1251B] font-semibold "
-                        : ""
-                    }`}
-                  >
-                    <Link
-                      href={`/${params?.code}/haqqimizda`}
-                      className="w-full block py-3 px-4 font-normal"
-                    >
-                      {data_translate?.header_3_text}
-                    </Link>
-                  </li>
-                  <li
-                    className={`border-b-[2px] border-[#E9ECF4] ${
-                      activePage === `/${params?.code}/meqsed`
-                        ? "text-[#E1251B] font-semibold "
-                        : ""
-                    }`}
-                  >
-                    <Link
-                      className="w-full block py-3 px-4 font-normal"
-                      href={`/${params?.code}/meqsed`}
-                    >
-                      {data_translate?.header_4_text}
-                    </Link>
-                  </li>
-                  <li
-                    className={`border-b-[2px] border-[#E9ECF4] ${
-                      activePage === `/${params?.code}/rehber`
-                        ? "text-[#E1251B] font-semibold "
-                        : ""
-                    }`}
-                  >
-                    <Link
-                      className="w-full block py-3 px-4 font-normal"
-                      href={`/${params?.code}/rehber`}
-                      dangerouslySetInnerHTML={{
-                        __html: DOMPurify.sanitize(
-                          data_translate?.header_5_text
-                        ),
-                      }}
-                    />
-                  </li>
-                  <li
-                    className={`border-b-[2px] border-[#E9ECF4] ${
-                      activePage === `/${params?.code}/sertifikatlar`
-                        ? "text-[#E1251B] font-semibold "
-                        : ""
-                    }`}
-                  >
-                    <Link
-                      className="w-full block py-3 px-4 font-normal"
-                      href={`/${params?.code}/sertifikatlar`}
-                    >
-                      {data_translate?.header_6_text}
-                    </Link>
-                  </li>
-                  <li
-                    className={`border-b-[2px] border-[#E9ECF4] ${
-                      activePage === `/${params?.code}/tovsiye`
-                        ? "text-[#E1251B] font-semibold "
-                        : ""
-                    }`}
-                  >
-                    <Link
-                      className="w-full block py-3 px-4 font-normal"
-                      href={`/${params?.code}/tovsiye`}
-                    >
-                      {data_translate?.header_7_text}
-                    </Link>
-                  </li>
-                  <li
-                    className={`${
-                      activePage === `/${params?.code}/faq`
-                        ? "text-[#E1251B] font-semibold "
-                        : ""
-                    }`}
-                  >
-                    <Link
-                      className="w-full block py-3 px-4 font-normal"
-                      href={`/${params?.code}/faq`}
-                    >
-                      {data_translate?.header_8_text}
-                    </Link>
-                  </li>
-                </ul>
-              </li>
-              <li
-                className={`px-4 2xl:px-2 child_li w-max ${
-                  activePage === `/${params?.code}/xidmetler`
-                    ? "text-[#E1251B] font-semibold "
-                    : ""
-                }`}
-              >
-                <Link href={`/${params?.code}/xidmetler`}>
-                  {data_translate?.header_9_text}
-                </Link>
-              </li>
-            </ul>
-          </div>
-          <div className="col-span-2 center flex items-center justify-center lg:pl-4">
-            <Link href={`/${params?.code}`}>
-              {scrolledFromTop ? (
+        <MaxWidth>
+          <nav className="  flex justify-between  ">
+            <div className="  flex items-center justify-center lg:pl-4">
+              <Link href={`/${params?.code}`}>
                 <img
-                  src="/header_logo_white.svg"
+                  src={`${process.env.NEXT_PUBLIC_PICTURE}/${data_footer?.settings?.logob}`}
                   alt="header_logo_white"
-                  className="w-[150px] 2xl:w-[120px] xl:w-[80px] object-cover"
+                  className="w-[212px] 2xl:w-[120px] xl:w-[80px] object-cover"
                 />
-              ) : (
-                <img
-                  src="/header_logo.svg"
-                  alt="header_logo"
-                  className="w-[150px] 2xl:w-[120px] xl:w-[80px] object-cover"
-                />
-              )}
-            </Link>
-          </div>
-          <div className="col-span-5  right  flex 2xl:pl-[20px] xl:pl-[10px] lg:hidden">
-            <ul className="flex items-center justify-end w-full gap-2 uppercase header-colors  ">
-              <li
-                className={`px-4 2xl:px-2 child_li ${
-                  activePage === `/${params?.code}/portfolio`
-                    ? "text-[#E1251B] font-semibold "
-                    : ""
-                }`}
-              >
-                <Link href={`/${params?.code}/portfolio`}>
-                  {data_translate?.header_10_text}
-                </Link>
-              </li>
+              </Link>
+            </div>
+            <div className="left  flex justify-start lg:hidden">
+              <ul className="flex items-center gap-2 uppercase font-normal header-colors 2xl:pr-[40px] xl:pr-[0px]">
+                {mobileHeader?.map((item) => {
+                  const isActive = pathname === item.href;
 
-              <li className="relative px-4 2xl:px-2 parent_li w-max">
-                <p className="cursor-pointer">
-                  {data_translate?.header_11_text}
-                </p>
-                <ul className=" flex-col absolute z-30 capitalize afterhover_ul top-[30px]  right-4 bg-[#F7F7FA] flex w-max opacity-0 invisible">
-                  <li
-                    className={`border-b-[2px] border-[#E9ECF4] ${
-                      activePage === `/${params?.code}/kiv`
-                        ? "text-[#E1251B] font-semibold "
-                        : ""
-                    }`}
-                  >
-                    <Link
-                      className="w-full block py-2 px-4 font-normal"
-                      href={`/${params?.code}/kiv`}
+                  return (
+                    <li
+                      key={item.id}
+                      className="px-4 xl:px-2 2xl:px-2 child_li w-max relative text-white font-['TTForsTrial-Medium']"
                     >
-                      {data_translate?.header_12_text}
-                    </Link>
-                  </li>
-                  <li
-                    className={`${
-                      activePage === `/${params?.code}/blog`
-                        ? "text-[#E1251B] font-semibold "
-                        : ""
-                    }`}
-                  >
-                    <Link
-                      href={`/${params?.code}/blog`}
-                      className="w-full block py-2 px-4 font-normal"
-                    >
-                      {data_translate?.header_13_text}
-                    </Link>
-                  </li>
-                </ul>
-              </li>
-              <li
-                className={`px-4 xl:px-2 child_li ${
-                  activePage === `/${params?.code}/elaqe`
-                    ? "text-[#E1251B] font-semibold "
-                    : ""
-                }`}
+                      <Link className="w-max text-[14px]" href={item.href}>
+                        {item.title}
+                      </Link>
+
+                      {isActive && (
+                        <span className="absolute left-[50%] translate-x-[-50%] -bottom-3 w-[48px]  h-[2px] bg-[#002D74]"></span>
+                      )}
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+            <div>
+              <Link
+                href={`/${params?.code}/telimciler`}
+                className="bg-[#fff] py-[15px] px-[36px] text-[16px] uppercase text-['#002D74'] font-['TTForsTrial-Medium'] rounded-[60px]"
               >
-                <Link href={`/${params?.code}/elaqe`}>
-                  {data_translate?.header_14_text}
-                </Link>
-              </li>
-              <li
-                className={`px-6 py-1 font-normal   cursor-pointer uppercase rounded-full  border border-[#E9ECF4] lang
-                  ${scrolledFromTop ? "text-[#fff]" : "text-[#000]"}
-                  `}
+                {data_translate?.header_4_text}
+              </Link>
+            </div>
+
+            <div className=" items-center lg:gap-5 hidden lg:flex">
+              <div
+                onClick={openSearch}
+                className="px-4 py-2 hidden lg:block child_li cursor-pointer border-[2px] border-[#E9ECF4] rounded-[48px] p-[2px]"
               >
-                <div className="w-max">
-                  <Lang
-                    toggle={() => setOpen(!open)}
-                    langs={langs}
-                    scrolledFromTop={scrolledFromTop}
-                    switchLang={
-                      open && (
-                        <div className="absolute  mt-6 right-[-30px] top-[8px] h-[50px] z-50   flex flex-col text-left items-center justify-center ">
-                          {myLang?.map((lang, index) => (
-                            <button
-                              className={`z-[200] capitalize 0 text-[15px] xl:text-[13px]  transitions  overflow-hidden px-6 py-1 rounded-lg bg-white-A700 hover:bg-[#5D9733] tran hover:text-white-A700 `}
-                              key={index}
-                              onClick={() => langSwitcher(lang)}
-                            >
-                              {lang}
-                            </button>
-                          ))}
-                        </div>
-                      )
-                    }
-                  />
-                </div>
-              </li>
-            </ul>
-          </div>
-          <div className=" items-center lg:gap-5 hidden lg:flex">
-            <div
-              onClick={openSearch}
-              className="px-4 py-2 hidden lg:block child_li cursor-pointer border-[2px] border-[#E9ECF4] rounded-[48px] p-[2px]"
-            >
-              <img src="/search-blue.svg" className="w-[15px]" alt="search" />
+                <img src="/search-blue.svg" className="w-[15px]" alt="search" />
+              </div>
+              <div className="w-max hidden lg:block ">
+                <Lang
+                  toggle={() => setOpen(!open)}
+                  langs={langs}
+                  scrolledFromTop={scrolledFromTop}
+                  switchLang={
+                    open && (
+                      <div className="absolute  mt-6 right-[-30px] top-[8px] h-[50px] flex flex-col text-left items-center justify-center ">
+                        {myLang?.map((lang, index) => (
+                          <button
+                            className={` z-[200] capitalize text-[15px] xl:text-[13px] transitions border border-solid border-blue_gray-100 overflow-hidden px-6 py-1 rounded-lg bg-white-A700 hover:bg-[#5D9733] tran hover:text-white-A700 `}
+                            key={index}
+                            onClick={() => langSwitcher(lang)}
+                          >
+                            {lang}
+                          </button>
+                        ))}
+                      </div>
+                    )
+                  }
+                />
+              </div>
+              <div
+                onClick={openMobileMenu}
+                className="burger hidden lg:block mobile_header_open"
+              >
+                <RxHamburgerMenu className="text-2xl cursor-pointer" />
+              </div>
             </div>
-            <div className="w-max hidden lg:block ">
-              <Lang
-                toggle={() => setOpen(!open)}
-                langs={langs}
-                scrolledFromTop={scrolledFromTop}
-                switchLang={
-                  open && (
-                    <div className="absolute  mt-6 right-[-30px] top-[8px] h-[50px] flex flex-col text-left items-center justify-center ">
-                      {myLang?.map((lang, index) => (
-                        <button
-                          className={` z-[200] capitalize text-[15px] xl:text-[13px] transitions border border-solid border-blue_gray-100 overflow-hidden px-6 py-1 rounded-lg bg-white-A700 hover:bg-[#5D9733] tran hover:text-white-A700 `}
-                          key={index}
-                          onClick={() => langSwitcher(lang)}
-                        >
-                          {lang}
-                        </button>
-                      ))}
-                    </div>
-                  )
-                }
-              />
-            </div>
-            <div
-              onClick={openMobileMenu}
-              className="burger hidden lg:block mobile_header_open"
-            >
-              <RxHamburgerMenu className="text-2xl cursor-pointer" />
-            </div>
-          </div>
-        </nav>
-      </div>
+          </nav>
+        </MaxWidth>
+      </header>
       <div
         ref={mobileRef}
         className="mobile-menu fixed top-0 pt-28 pl-16 left-[-100%] z-[1000] h-full w-[400px] md:w-full bg-white trans  "
