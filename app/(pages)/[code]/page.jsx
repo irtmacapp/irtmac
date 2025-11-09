@@ -3,7 +3,7 @@ import {
   fetchFooterSettings,
   fetchTranslations,
 } from "@/app/fetch/GlobalFetch";
-import { Suspense } from "react";
+
 import MainLayout from "./(Layout)/MainLayout";
 import FirstComponent from "@/app/(components)/containers/Home/HomeComponents/FirstComponent";
 import HomeLogos from "@/app/(components)/containers/Home/HomeComponents/Logos";
@@ -12,6 +12,10 @@ import HomeVideo from "@/app/(components)/containers/Home/HomeComponents/HomeVid
 import Appeal from "@/app/(components)/containers/Home/HomeComponents/Appeal";
 import HomeServices from "@/app/(components)/containers/Home/HomeComponents/HomeServices";
 import HomeNews from "@/app/(components)/containers/Home/HomeComponents/HomeNews";
+import Trainers from "@/app/(components)/containers/Trainers/Trainers";
+import Customers from "@/app/(components)/containers/Customers/Customers";
+import Header from "@/app/(components)/layout/Header/Index";
+import Footer from "@/app/(components)/layout/Footer/Index";
 
 export async function generateMetadata({ params }) {
   const data = await fetchFooterSettings(params?.code);
@@ -53,11 +57,12 @@ const getData = async (params) => {
 export default async function page({ params }) {
   const { data_footer, data_translate, data_main } = await getData(params);
   return (
-    <MainLayout
-      data_footer={data_footer}
-      params={params}
-      data_translate={data_translate}
-    >
+    <>
+      <Header
+        params={params}
+        data_translate={data_translate}
+        data_footer={data_footer}
+      />
       <FirstComponent data={data_main?.slayder_translate} />
       <HomeLogos data={data_main?.partnyorlar} />
 
@@ -74,14 +79,33 @@ export default async function page({ params }) {
         data={data_main?.xidmetler}
         data_translate={data_translate}
       />
+      <Trainers
+        trainers_short={data_translate?.trainers_short}
+        trainers_long={data_translate?.trainers_long}
+        data={data_main?.telimciler}
+        seemore={data_translate?.showmore}
+        params={params?.code}
+      />
+      <Appeal data={data_main?.xidmetler} data_translate={data_translate} />
+      <Customers
+        customers={data_main?.reyler}
+        customers_text={data_translate?.customers}
+        customers_long={data_translate?.customers_long}
+      />
       <HomeNews
         data={data_main?.xeberler}
         blog={data_translate?.blog}
         params={params}
         showmore={data_translate?.showmore}
         count1={data_translate?.count1}
+        news_title={data_translate?.news_title}
+        readmore={data_translate?.readmore}
       />
-      <Appeal data={data_main?.xidmetler} data_translate={data_translate} />
-    </MainLayout>
+      <Footer
+        data={data_footer}
+        params={params}
+        footer_text={data_translate?.footer_text}
+      />
+    </>
   );
 }

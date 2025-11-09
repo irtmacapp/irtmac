@@ -932,6 +932,33 @@ div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm {
   transform: scale(0.95);
 }
 
+.bg_card1 {
+  background: linear-gradient(361deg, #009ade, transparent 13%);
+  padding: 1px;
+  position: relative;
+
+}
+
+.bg_card1:before {
+  content: "";
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(13deg, #009ade, transparent 0%);
+  border-radius: 20px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.bg_card1 .bg_card2 {
+  z-index: 2;
+  border-radius: 20px;
+  position: relative;
+  background-color: #fff;
+}
+
 @keyframes swing {
   0% {
     transform: rotate(0deg);

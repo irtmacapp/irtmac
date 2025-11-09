@@ -1,4 +1,5 @@
 import MaxWidth from "@/app/(components)/MaxWidth/MaxWidth";
+import Image from "next/image";
 
 const FirstComponent = ({ data }) => {
   return (
@@ -20,6 +21,14 @@ const FirstComponent = ({ data }) => {
               }}
             ></div>
           </div>
+          <span className="absolute bottom-[-40px] right-[112px] flex justify-center items-center w-[94px] h-[94px] rounded-full bg-[#f32735]">
+            <Image
+              width={62}
+              height={32}
+              alt="slider_logo"
+              src={"/slider_logo.svg"}
+            />
+          </span>
         </div>
       </MaxWidth>
     </section>

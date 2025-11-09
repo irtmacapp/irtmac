@@ -1,54 +1,56 @@
 import Image from "next/image";
 import Link from "next/link";
 import { handleScrollToBottom } from "../../handleScrollToBottom/handleScrollToBottom";
+import AnimatedButton from "../../global_containers/AnimatedButton/AnimatedButton";
 
-const NewsItem = ({ href, img, tagName, data, name, text }) => {
+const NewsItem = ({ href, img, readmore, data, name, text, news_title }) => {
   return (
-    <Link
-      href={href}
+    <div
       onClick={handleScrollToBottom}
-      className="col-span-4 xl:col-span-4 lg:col-span-6 md:col-span-12 newsgrid h-full "
+      className="col-span-4 xl:col-span-4 lg:col-span-6 md:col-span-12  h-full"
     >
-      <div className="flex flex-col h-full">
+      <div className="flex flex-col h-full  p-[16px] bg-[#f0f6f9] rounded-[20px]">
         <Image
           width={1000}
           height={1000}
           src={img}
           alt={name}
           priority
-          className="img-fluid h-[320px] min-h-[320px] lg:h-[200px]"
+          className="img-fluid h-[240px] rounded-[20px] "
         />
-        <div className="bg-[#E7EFF7] flex flex-col px-10 py-10 2xl:px-5 2xl:py-5 relative overflow-hidden title_content h-full">
-          <div className="flex items-center justify-between gap-4 ">
-            <h5 className="bg-[#CAEEFB] text-black text-[13px] rounded-full tagname px-4 py-2 capitalize ">
-              <div className="line-clamp-2">{tagName}</div>
-            </h5>
-
-            {data !== null && (
-              <h3 className="border border-[#C5CEE0] rounded-full text-[13px]  px-4 py-2 ">
-                {data}
-              </h3>
-            )}
-          </div>
-          <h4 className="text-[#003B71] text-2xl 2xl:text-xl font-medium mb-4 mt-6 line-clamp-2">
+        <div className=" flex flex-col pt-[16px]  relative overflow-hidden  h-full">
+          <Link
+            href={href}
+            className="text-[#003B71] font-['TTForsTrial-Medium'] text-[24px] line-clamp-2 leading-[100%] mb-[16px]"
+          >
             {name}
-          </h4>
+          </Link>
           <div
-            key={text} // text değişince yeniden mount olur
-            className="text-[#003B71] line-clamp-2 h-[3em]"
+            key={text}
+            className="text-[#003B71] line-clamp-3 text-[14px] mb-[40px]"
             dangerouslySetInnerHTML={{
-              __html: text,
+              __html: `${text}`,
             }}
           />
-
-          <img
-            src="/absolute_pic.svg"
-            alt="absolute_pic"
-            className="absolute top-0 right-[-100%] h-full mix-blend-plus-lighter"
-          />
+          <div className="flex justify-between items-center w-full">
+            {data !== null && (
+              <div className=" w-max text-[13px]  px-4 py-2 flex gap-[10px] items-center">
+                <h6 className="capitalize text-[#5b748d] text-[16px]">
+                  {news_title}
+                </h6>
+                <span className="capitalize text-[#5b748d] text-[16px]">/</span>
+                <h6 className="capitalize text-[#5b748d] text-[16px]">
+                  {data}
+                </h6>
+              </div>
+            )}
+            <div>
+              <AnimatedButton leanmore={readmore} href={href} />
+            </div>
+          </div>
         </div>
       </div>
-    </Link>
+    </div>
   );
 };
 

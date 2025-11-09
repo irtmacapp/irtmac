@@ -6,7 +6,7 @@ const HomeVideo = ({ data, params, readmore }) => {
   return (
     <section className="mt-[80px]">
       <MaxWidth>
-        <div className="bg-[#002856] py-[40px] px-[100px] rounded-[30px]">
+        <div className="bg-[#002856] py-[40px] px-[100px] rounded-[30px] relative overflow-hidden">
           <div className="grid grid-cols-12 ">
             <div className="col-span-3 flex  ">
               <div className="flex flex-col justify-center items-center">
@@ -49,6 +49,14 @@ const HomeVideo = ({ data, params, readmore }) => {
               </div>
             </div>
           </div>
+          <span className="absolute right-[-66px] top-[-66px]">
+            <Image
+              width={200}
+              height={200}
+              alt={data?.title}
+              src={`${process.env.NEXT_PUBLIC_PICTURE}/${data?.image}`}
+            />
+          </span>
         </div>
       </MaxWidth>
     </section>

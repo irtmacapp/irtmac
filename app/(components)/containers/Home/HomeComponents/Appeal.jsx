@@ -1,12 +1,12 @@
 "use client";
+import MaxWidth from "@/app/(components)/MaxWidth/MaxWidth";
 import axios from "axios";
+import Image from "next/image";
 import { useState } from "react";
 
 import Swal from "sweetalert2";
 
 const Appeal = ({ data, data_translate }) => {
-
-
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
     fullname: "",
@@ -71,45 +71,59 @@ const Appeal = ({ data, data_translate }) => {
   };
 
   return (
-    <section className="mt-16">
-      <div className="max-w-[1580px]  2xl:max-w-[1380px] xl:max-w-[1150px] 3xl:px-16 xl:px-8  m-auto  lg:px-4">
-        <div className="bg-[#E7EFF7] px-10 py-10 lg:py-5 lg:px-5">
-          <h3 className="text-4xl text-[#003B71] text-center mb-6 lg:text-xl">
-            {data_translate?.muraciet}
-          </h3>
-          <form onSubmit={handleSubmit} className="w-full">
-            <div className="grid grid-cols-12 gap-4">
-              <div className="col-span-11 xl:col-span-10 lg:col-span-12">
-                <div className="grid grid-cols-12 gap-5">
-                  <div className="col-span-4 lg:col-span-6 md:col-span-12">
+    <section className="my-[80px]">
+      <MaxWidth>
+        <div className="mx-[120px] bg-[#f0f6f9] rounded-[30px] relative py-[40px] px-[120px]">
+          <Image
+            width={1000}
+            height={1000}
+            alt="linear"
+            src={"/contact_linear2.png"}
+            className="w-full h-full absolute top-0 left-0 right-0 object-cover"
+          />
+          <div className="grid grid-cols-12 gap-[40px]">
+            <div className="col-span-5 ">
+              <div className="flex flex-col">
+                <h3 className="text-[36px] font-['TTForsTrial-Medium'] text-[#003b71]">
+                  {data_translate?.muraciet}
+                </h3>
+                <p className="text-[14px] text-[#002d74] font-['TTForsTrial-Regular'] mt-[24px]">
+                  {data_translate?.muraciet_long}
+                </p>
+              </div>
+            </div>
+            <div className="col-span-7 relative z-40">
+              <form onSubmit={handleSubmit} className="w-full pl-[60px]">
+                <div className="flex flex-col gap-[16px]">
+                  <div className="">
                     <input
                       id="fullname"
                       type="text"
                       value={form.fullname}
                       onChange={handleChange}
                       name="fullname"
-                      className="w-full py-4 px-6 outline-none rounded-none placeholder:text-[#5B748D]"
+                      className="w-full py-[16px] px-[32px] text-[14px] outline-none bg-[#fff] rounded-[70px] placeholder:text-[#5B748D]"
                       placeholder={data_translate?.adSoyad}
                     />
                   </div>
-                  <div className="col-span-4 lg:col-span-6 md:col-span-12">
+                  <div className="">
                     <input
                       id="number"
                       type="text"
                       value={form.number}
                       onChange={handleChange}
                       name="number"
-                      className="w-full py-4 px-6 outline-none rounded-none placeholder:text-[#5B748D]"
+                      className="w-full py-[16px] px-[32px] text-[14px]  outline-none bg-[#fff]  rounded-[70px] placeholder:text-[#5B748D]"
                       placeholder="994 00 000 00 00"
                     />
                   </div>
-                  <div className="col-span-4 lg:col-span-6 md:col-span-12 relative">
+                  <div className=" relative">
                     <div
-                      className="w-full py-4 px-6 outline-none text-black placeholder:text-[#5B748D] cursor-pointer bg-white"
+                      className="w-full py-[16px] px-[32px] outline-none rounded-[70px] text-[#5b748d] placeholder:text-[#5B748D] cursor-pointer bg-white"
                       onClick={() => setDropdownOpen(!dropdownOpen)}
                     >
                       <div className="flex justify-between items-center">
-                        <h3>
+                        <h3 className="text-[16px] text-[#5b748d]">
                           {data?.find((cur) => cur.id === form.service_id)
                             ?.title || data_translate?.selectService}
                         </h3>
@@ -125,13 +139,13 @@ const Appeal = ({ data, data_translate }) => {
                       </div>
                     </div>
                     {dropdownOpen && (
-                      <ul className="absolute top-full left-0 w-full bg-white shadow-md z-10">
+                      <ul className="absolute top-full left-0 w-full py-[10px] bg-white shadow-md z-10 rounded-[20px]">
                         {data &&
                           data.map((cur, i) => (
                             <li
                               key={i}
                               name="service_id"
-                              className="py-2 px-4 hover:bg-gray-200 cursor-pointer"
+                              className="px-[20px] py-[10px] text-[14px]  hover:bg-gray-200 cursor-pointer"
                               onClick={() => handleSelect(cur?.title, cur.id)}
                             >
                               {cur?.title}
@@ -140,20 +154,20 @@ const Appeal = ({ data, data_translate }) => {
                       </ul>
                     )}
                   </div>
+                  <div className="flex justify-end mt-[20px]">
+                    <button className="flex   items-center justify-center text-[14px] rounded-[60px] gap-[20px] px-[41px] py-[15px] text-white  capitalize bg-[#003B71] h-full">
+                      {loading ? data_translate?.sending : data_translate?.send}
+                      <span>
+                        <img src="/send.svg" alt="send" />
+                      </span>
+                    </button>
+                  </div>
                 </div>
-              </div>
-              <div className="col-span-1 xl:col-span-2 lg:col-span-12 lg:flex lg:justify-end">
-                <button className="flex w-max lg:w-max py-4 px-2 items-center justify-center lg:px-4 lg:py-2 text-white gap-2 capitalize bg-[#003B71] h-full">
-                  {loading ? data_translate?.sending : data_translate?.send}
-                  <span>
-                    <img src="/send.svg" alt="send" />
-                  </span>
-                </button>
-              </div>
+              </form>
             </div>
-          </form>
+          </div>
         </div>
-      </div>
+      </MaxWidth>
     </section>
   );
 };

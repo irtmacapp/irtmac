@@ -21,7 +21,7 @@ const Bredcump = ({ name, longtext, href }) => {
       </div>
 
       {longtext && (
-        <p className="text-[24px] pt-6 text-[#003B71]">{longtext}</p>
+        <p className="text-[20px] pt-6 text-[#003B71]">{longtext}</p>
       )}
     </>
   );
