@@ -5,28 +5,29 @@ import {
 } from "@/app/fetch/GlobalFetch";
 
 import Header from "@/app/(components)/layout/Header/Index";
-import About from "@/app/(components)/containers/About/About";
+
 import Footer from "@/app/(components)/layout/Footer/Index";
+import Instructions from "@/app/(components)/containers/Instructions/Instructions";
 
 const getData = async (params) => {
   const data_footer = await fetchFooterSettings(params?.code);
   const data_translate = await fetchTranslations(params?.code);
-  const data_about = await fetchData(params?.code, "about_company");
-  return { data_footer, data_translate, data_about };
+  const data_telim = await fetchData(params?.code, "telimler");
+  return { data_footer, data_translate, data_telim };
 };
 
 export async function generateMetadata({ params }) {
-  const { data_footer, data_about } = await getData(params);
+  const { data_footer, data_translate } = await getData(params);
 
   return {
-    title: `${data_footer?.settings?.title} - ${data_about?.haqqimizda?.title}`,
+    title: `${data_footer?.settings?.title} - ${data_translate?.header_3_text}`,
     description: data_footer?.settings?.description,
     icons: {
       icon: "/fav.png",
       apple: "/fav.png",
     },
     openGraph: {
-      title: `${data_footer?.settings?.title} - ${data_about?.haqqimizda?.title}`,
+      title: `${data_footer?.settings?.title} - ${data_translate?.header_3_text}`,
       description: data_footer?.settings?.meta_description,
       url: "https://rightwellton.az/",
       siteName: "RIGHTWELLTON.AZ",
@@ -43,7 +44,7 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function page({ params }) {
-  const { data_footer, data_translate, data_about } = await getData(params);
+  const { data_footer, data_translate, data_telim } = await getData(params);
 
   return (
     <>
@@ -52,7 +53,13 @@ export default async function page({ params }) {
         data_translate={data_translate}
         data_footer={data_footer}
       />
-      <About data={data_about} />
+      <Instructions
+        data={data_telim}
+        header_3_text={data_translate?.header_3_text}
+        params={params}
+        readmore={data_translate?.readmore}
+        newText={data_translate?.new}
+      />
       <Footer data={data_footer} params={params} />
     </>
   );

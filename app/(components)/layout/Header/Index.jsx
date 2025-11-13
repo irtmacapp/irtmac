@@ -212,7 +212,7 @@ const Header = ({ params, data_translate, data_footer }) => {
 
   return (
     <>
-      <header className="bg-[#002D74]  py-[25px]">
+      <header className="bg-[#002D74]  py-[25px] absolute top-0 left-0 right-0 h-[80px] z-[305]">
         <MaxWidth>
           <div className="flex justify-between items-center">
             <p className="text-white text-[14px]">
@@ -255,14 +255,14 @@ const Header = ({ params, data_translate, data_footer }) => {
           </div>
         </MaxWidth>
       </header>
-      <div
-        onClick={closeMobileMenu}
-        ref={overlayDiv}
-        className="mobile-menu-overlay overflow-x-hidden block fixed left-0 top-0 bottom-0 right-0 z-[100] overlay "
-      />
+
       <header
-        className={` w-full   rounded-br-[20px] rounded-bl-[20px]  top-0 left-0 right-0 header-tr z-[300] bg-[#009ADE] 
-           ${scrolledFromTop ? "fixed py-[26px]" : "py-[46px]"}`}
+        className={` w-full   rounded-br-[20px] rounded-bl-[20px]   left-0 right-0 header-tr z-[300] bg-[#009ADE] 
+           ${
+             scrolledFromTop
+               ? "fixed py-[26px] top-[0px]"
+               : "absolute py-[46px] top-[80px]"
+           }`}
       >
         <MaxWidth>
           <nav className="  flex justify-between  ">
@@ -320,7 +320,7 @@ const Header = ({ params, data_translate, data_footer }) => {
                   scrolledFromTop={scrolledFromTop}
                   switchLang={
                     open && (
-                      <div className="absolute  mt-6 right-[-30px] top-[8px] h-[50px] flex flex-col text-left items-center justify-center ">
+                      <div className="absolute  mt-6 right-[-30px] top-[8px] z-[100] h-[50px] flex flex-col text-left items-center justify-center ">
                         {myLang?.map((lang, index) => (
                           <button
                             className={` z-[200] capitalize text-[15px] xl:text-[13px] transitions border border-solid border-blue_gray-100 overflow-hidden px-6 py-1 rounded-lg bg-white-A700 hover:bg-[#5D9733] tran hover:text-white-A700 `}
@@ -345,7 +345,7 @@ const Header = ({ params, data_translate, data_footer }) => {
           </nav>
         </MaxWidth>
       </header>
-      <div
+      <header
         ref={mobileRef}
         className="mobile-menu fixed top-0 pt-28 pl-16 left-[-100%] z-[1000] h-full w-[400px] md:w-full bg-white trans  "
       >
@@ -414,7 +414,7 @@ const Header = ({ params, data_translate, data_footer }) => {
               );
             })}
         </ul>
-      </div>
+      </header>
       <div
         ref={serachComponent}
         className="fixed top-[-100%] left-0 right-0 w-full bg-white  py-6 z-[500] trans "
@@ -451,6 +451,11 @@ const Header = ({ params, data_translate, data_footer }) => {
           params={params}
         />
       </div>
+      <div
+        onClick={closeMobileMenu}
+        ref={overlayDiv}
+        className="mobile-menu-overlay overflow-x-hidden block fixed left-0 top-0 bottom-0 right-0 z-[100] overlay "
+      />
     </>
   );
 };

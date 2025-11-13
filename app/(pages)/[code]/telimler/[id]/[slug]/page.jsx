@@ -5,31 +5,36 @@ import {
 } from "@/app/fetch/GlobalFetch";
 
 import Header from "@/app/(components)/layout/Header/Index";
-import About from "@/app/(components)/containers/About/About";
+
 import Footer from "@/app/(components)/layout/Footer/Index";
+import Instructions from "@/app/(components)/containers/Instructions/Instructions";
+import InstructionsSlug from "@/app/(components)/containers/Instructions/InstructionsSlug";
 
 const getData = async (params) => {
   const data_footer = await fetchFooterSettings(params?.code);
   const data_translate = await fetchTranslations(params?.code);
-  const data_about = await fetchData(params?.code, "about_company");
-  return { data_footer, data_translate, data_about };
+  const data_telim = await fetchData(
+    params?.code,
+    `telimler/${params?.id}/${params?.slug}`
+  );
+  return { data_footer, data_translate, data_telim };
 };
 
 export async function generateMetadata({ params }) {
-  const { data_footer, data_about } = await getData(params);
+  const { data_footer, data_telim } = await getData(params);
 
   return {
-    title: `${data_footer?.settings?.title} - ${data_about?.haqqimizda?.title}`,
-    description: data_footer?.settings?.description,
+    title: `${data_footer?.settings?.title} - ${data_telim?.title}`,
+    description: data_telim?.short_desc?.description,
     icons: {
       icon: "/fav.png",
       apple: "/fav.png",
     },
     openGraph: {
-      title: `${data_footer?.settings?.title} - ${data_about?.haqqimizda?.title}`,
-      description: data_footer?.settings?.meta_description,
+      title: `${data_footer?.settings?.title} - ${data_telim?.title}`,
+      description: data_telim?.short_desc?.description,
       url: "https://rightwellton.az/",
-      siteName: "RIGHTWELLTON.AZ",
+      siteName: "irtmac.az",
       images: [
         {
           url: `${process.env.NEXT_PUBLIC_PICTURE}/${data_footer?.settings?.logo}`,
@@ -43,7 +48,7 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function page({ params }) {
-  const { data_footer, data_translate, data_about } = await getData(params);
+  const { data_footer, data_translate, data_telim } = await getData(params);
 
   return (
     <>
@@ -52,7 +57,7 @@ export default async function page({ params }) {
         data_translate={data_translate}
         data_footer={data_footer}
       />
-      <About data={data_about} />
+      <InstructionsSlug data={data_telim} />
       <Footer data={data_footer} params={params} />
     </>
   );

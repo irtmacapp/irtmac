@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const FirstComponent = ({ data }) => {
   return (
-    <section className="rounded-br-[30px] rounded-bl-[30px]">
+    <section className="rounded-br-[30px] rounded-bl-[30px] mt-[200px]">
       <MaxWidth>
         <div className="relative">
           <img
