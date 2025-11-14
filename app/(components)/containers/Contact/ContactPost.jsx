@@ -6,9 +6,6 @@ import { useState } from "react";
 import Swal from "sweetalert2";
 
 const ContactPost = ({
-  teklif,
-  irad,
-  sikayet,
   adSoyad,
   mesaj,
   sending,

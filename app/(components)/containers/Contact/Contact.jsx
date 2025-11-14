@@ -4,9 +4,7 @@ import ContactPost from "./ContactPost";
 const Contact = ({
   contact,
   contact_1,
-  teklif_1,
-  irad_1,
-  sikayet_1,
+
   adSoyad_1,
   mesaj_1,
   sending_1,
@@ -36,9 +34,6 @@ const Contact = ({
           </div>
           <div className="">
             <ContactPost
-              teklif={teklif_1}
-              irad={irad_1}
-              sikayet={sikayet_1}
               adSoyad={adSoyad_1}
               mesaj={mesaj_1}
               sending={sending_1}
