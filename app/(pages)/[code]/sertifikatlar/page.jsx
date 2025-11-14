@@ -6,7 +6,7 @@ import {
   fetchFooterSettings,
   fetchTranslations,
 } from "@/app/fetch/GlobalFetch";
-import { Suspense } from "react";
+
 const getData = async (params) => {
   const data_footer = await fetchFooterSettings(params?.code);
   const data_translate = await fetchTranslations(params?.code);
@@ -44,7 +44,7 @@ export async function generateMetadata({ params }) {
 export default async function page({ params }) {
   const { data_footer, data_translate, data_cer } = await getData(params);
   return (
-    <Suspense>
+    <>
       <Header
         params={params}
         data_translate={data_translate}
@@ -56,6 +56,6 @@ export default async function page({ params }) {
         showpdf={data_translate?.showpdf}
       />
       <Footer data={data_footer} params={params} />
-    </Suspense>
+    </>
   );
 }

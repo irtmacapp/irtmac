@@ -45,7 +45,7 @@ const InstructionsSlug = ({ data }) => {
   }));
 
   return (
-    <section className="mt-[250px] mb-[80px]">
+    <section className="mt-[250px] mb-[80px] min-h-[60vh]">
       <MaxWidth>
         <h3 className="text-center text-[36px] text-[#002d74] font-['TTForsTrial-Bold']">
           {data?.title}

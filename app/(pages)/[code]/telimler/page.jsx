@@ -23,8 +23,8 @@ export async function generateMetadata({ params }) {
     title: `${data_footer?.settings?.title} - ${data_translate?.header_3_text}`,
     description: data_footer?.settings?.description,
     icons: {
-      icon: "/fav.png",
-      apple: "/fav.png",
+      icon: `${process.env.NEXT_PUBLIC_PICTURE}/${data_footer?.settings?.favicon}`, // Dinamik favicon URL-i
+      apple: `${process.env.NEXT_PUBLIC_PICTURE}/${data_footer?.settings?.favicon}`, // Əgər apple-touch-icon da eynidirsə
     },
     openGraph: {
       title: `${data_footer?.settings?.title} - ${data_translate?.header_3_text}`,

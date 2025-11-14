@@ -4,7 +4,7 @@ import ContactPost from "./ContactPost";
 const Contact = ({
   contact,
   contact_1,
-
+  map,
   adSoyad_1,
   mesaj_1,
   sending_1,
@@ -49,6 +49,15 @@ const Contact = ({
               settingsEmail={settingsEmail}
               seetingsAdress={seetingsAdress}
             />
+          </div>
+          <div className="relative mt-[80px]">
+            <iframe
+              src={map}
+              allowFullScreen=""
+              loading="lazy"
+              referRerPolicy="no-referrer-when-downgrade"
+              className="w-full h-[500px] overflow-hidden rounded-[20px]"
+            ></iframe>
           </div>
         </MaxWidth>
       </section>

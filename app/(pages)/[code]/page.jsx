@@ -4,7 +4,6 @@ import {
   fetchTranslations,
 } from "@/app/fetch/GlobalFetch";
 
-import MainLayout from "./(Layout)/MainLayout";
 import FirstComponent from "@/app/(components)/containers/Home/HomeComponents/FirstComponent";
 import HomeLogos from "@/app/(components)/containers/Home/HomeComponents/Logos";
 import Counters from "@/app/(components)/containers/Home/HomeComponents/Counters";
