@@ -1,6 +1,7 @@
 "use client";
 
 import axios from "axios";
+import Image from "next/image";
 import { useState } from "react";
 import Swal from "sweetalert2";
 
@@ -27,7 +28,6 @@ const ContactPost = ({
     email: "",
     number: "",
     fullname: "",
-    muraciet_formasi: "",
     message: "",
   });
   const [loading, setLoading] = useState(false);
@@ -72,7 +72,6 @@ const ContactPost = ({
             email: "",
             number: "",
             fullname: "",
-            muraciet_formasi: "",
             message: "",
           });
           setLoading(false);
@@ -84,106 +83,57 @@ const ContactPost = ({
       });
   };
 
-
   return (
     <>
-      <div className="col-span-8 lg:col-span-12 bg-[#E7EFF7] relative z-30 overflow-hidden">
+      <div className=" bg-[#f0f6f9] relative z-30 rounded-[30px] h-full">
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col p-10 lg:p-5 w-[80%] lg:w-full"
+          className="flex flex-col px-[100px] py-[40px] h-full "
         >
-          <div className="grid grid-cols-12 gap-4 mb-4 contact_radio">
-            <div className="col-span-4 lg:col-span-6 md:col-span-12 border border-[#C5CEE0] radio_inp cursor-pointer bg-white flex justify-between px-6 py-4 rounded-[70px]">
-              <label
-                className="text-[#003B71] font-medium text-xl lg:text-lg cursor-pointer block w-full"
-                htmlFor="input_1"
-              >
-                {teklif}
-              </label>
+          <div className="grid grid-cols-12  h-full gap-[24px]">
+            <div className="col-span-6 flex flex-col justify-between h-full gap-[20px] ">
               <input
-                value="1"
+                value={form.fullname}
                 onChange={handleChange}
-                name="muraciet_formasi"
-                type="radio"
-                id="input_1"
+                type="text"
+                id="fullname"
+                name="fullname"
+                placeholder={adSoyad}
+                className="py-[16px] px-[24px] w-full text-[16px] border-none shadow-none rounded-[80px] outline-none placeholder:text-[#5B748D] placeholder:capitalize"
+              />
+              <input
+                name="number"
+                id="number"
+                value={form.number}
+                onChange={handleChange}
+                type="text"
+                placeholder="+994 00 000 00 00"
+                className="py-[16px]  px-[24px] w-full text-[16px] border-none shadow-none rounded-[80px] outline-none placeholder:text-[#5B748D] placeholder:capitalize"
+              />
+              <input
+                id="email"
+                name="email"
+                value={form.email}
+                onChange={handleChange}
+                type="text"
+                placeholder={emails}
+                className="py-[16px]  px-[24px] w-full text-[16px] border-none shadow-none rounded-[80px] outline-none placeholder:text-[#5B748D] placeholder:capitalize"
               />
             </div>
-            <div className="col-span-4 lg:col-span-6 md:col-span-12 border border-[#C5CEE0] radio_inp cursor-pointer bg-white flex justify-between px-6 py-4 rounded-[70px]">
-              <label
-                className="text-[#003B71] font-medium text-xl lg:text-lg cursor-pointer block w-full"
-                htmlFor="input_2"
-              >
-                {irad}
-              </label>
-              <input
-                value="2"
+            <div className="col-span-6">
+              <textarea
+                id="message"
+                name="message"
+                value={form.message}
                 onChange={handleChange}
-                name="muraciet_formasi"
-                type="radio"
-                id="input_2"
-              />
-            </div>
-            <div className="col-span-4 lg:col-span-6 md:col-span-12 border border-[#C5CEE0] radio_inp cursor-pointer bg-white flex justify-between px-6 py-4 rounded-[70px]">
-              <label
-                className="text-[#003B71] font-medium text-xl lg:text-lg cursor-pointer  block w-full"
-                htmlFor="input_3"
-              >
-                {sikayet}
-              </label>
-              <input
-                value="3"
-                onChange={handleChange}
-                name="muraciet_formasi"
-                type="radio"
-                id="input_3"
-              />
+                placeholder={mesaj}
+                className="py-[16px] mb-4 px-[24px] w-full text-[16px] border-none shadow-none rounded-[20px] outline-none placeholder:text-[#5B748D] placeholder:capitalize resize-none h-full"
+              ></textarea>
             </div>
           </div>
-          <div className="input_row">
-            <input
-              value={form.fullname}
-              onChange={handleChange}
-              type="text"
-              id="fullname"
-              name="fullname"
-              placeholder={adSoyad}
-              className="py-4 mb-4 px-6 w-full border-none shadow-none outline-none placeholder:text-[#5B748D] placeholder:capitalize"
-            />
-          </div>
-          <div className="input_row">
-            <input
-              name="number"
-              id="number"
-              value={form.number}
-              onChange={handleChange}
-              type="text"
-              placeholder="994 00 000 00 00"
-              className="py-4 mb-4 px-6 w-full border-none shadow-none outline-none placeholder:text-[#5B748D] placeholder:capitalize"
-            />
-          </div>
-          <div className="input_row">
-            <input
-              id="email"
-              name="email"
-              value={form.email}
-              onChange={handleChange}
-              type="text"
-              placeholder={emails}
-              className="py-4 mb-4 px-6 w-full border-none shadow-none outline-none placeholder:text-[#5B748D] placeholder:capitalize"
-            />
-          </div>
-          <div className="">
-            <textarea
-              id="message"
-              name="message"
-              value={form.message}
-              onChange={handleChange}
-              placeholder={mesaj}
-              className="py-4 mb-4 px-6 h-[200px] w-full border-none shadow-none outline-none placeholder:text-[#5B748D] placeholder:capitalize resize-none"
-            ></textarea>
-          </div>
-          <div className="flex justify-end">
-            <button className="flex items-center bg-[#003B71] px-8 py-3 capitalize text-white">
+
+          <div className="flex justify-end mt-[24px]">
+            <button className="flex items-center bg-[#003B71] px-[31px] py-[13px] text-[16px] capitalize text-white rounded-[60px]">
               {loading ? sending : send}
               <span className="block pl-3">
                 <img src="/send.svg" alt="send" />
@@ -192,45 +142,37 @@ const ContactPost = ({
           </div>
         </form>
       </div>
-      <div className="col-span-4 lg:col-span-12 flex justify-center items-start mt-10">
-        <div className="bg-[#003B71] w-full ml-[-60px] lg:ml-0 z-[50] relative">
-          <img
-            src="/absolute_pic.svg"
-            className="absolute top-0 right-0 h-full"
-            alt="absolute_pic"
-          />
-          <div className="flex flex-col px-28 3xl:px-12 py-12 xl:px-10 lg:py-6">
-            <div className="flex flex-col mb-10">
-              <h6 className="text-[#E1251B] font-normal text-xl mb-2 w-max">
-                {phones}
-              </h6>
+      <div className=" flex justify-center items-start ">
+        <div className="bg-[#009ade] w-full  px-[120px] py-[40px] mx-[120px] rounded-bl-[30px] rounded-br-[30px]">
+          <div className="grid grid-cols-12  ">
+            <div className="flex flex-col gap-[16px] col-span-4">
+              <Image width={24} height={24} alt="map" src={"/location.svg"} />
+              <h6 className="text-[14px] text-white">{map}</h6>
               <a
-                className="text-white font-semibold text-2xl xl:text-lg  w-max"
+                className="text-white font-semibold text-[18px] w-[80%]"
+                href="#"
+              >
+                {seetingsAdress}
+              </a>
+            </div>
+            <div className="flex flex-col gap-[16px] col-span-4">
+              <Image width={24} height={24} alt="map" src={"/phone.svg"} />
+              <h6 className="text-[14px] text-white">{phones}</h6>
+              <a
+                className="text-white font-semibold text-[18px]"
                 href={`tel:${settingsNumber}`}
               >
                 {settingsNumber}
               </a>
             </div>
-            <div className="flex flex-col mb-10">
-              <h6 className="text-[#E1251B] font-normal text-xl mb-2  w-max">
-                {emails}
-              </h6>
+            <div className="flex flex-col gap-[16px] col-span-4">
+              <Image width={24} height={24} alt="map" src={"/email.svg"} />
+              <h6 className="text-[14px] text-white">{emails}</h6>
               <a
-                className="text-white font-semibold text-2xl xl:text-lg  w-max"
+                className="text-white font-semibold text-[18px]"
                 href={`mailto:${settingsEmail}`}
               >
                 {settingsEmail}
-              </a>
-            </div>
-            <div className="flex flex-col">
-              <h6 className="text-[#E1251B] font-normal text-xl mb-2  w-max">
-                {map}
-              </h6>
-              <a
-                className="text-white font-semibold text-2xl xl:text-lg "
-                href="#"
-              >
-                {seetingsAdress}
               </a>
             </div>
           </div>

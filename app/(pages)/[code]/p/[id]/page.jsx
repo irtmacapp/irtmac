@@ -22,8 +22,8 @@ export async function generateMetadata({ params }) {
     title: `RIGHTWELLTON - ${data?.portfolio?.title}`,
     description: data?.portfolio?.text,
     icons: {
-      icon: "/fav.png", // Dinamik favicon URL-i
-      apple: "/fav.png", // Əgər apple-touch-icon da eynidirsə
+      icon: `${process.env.NEXT_PUBLIC_PICTURE}/${data?.settings?.favicon}`, // Dinamik favicon URL-i
+      apple: `${process.env.NEXT_PUBLIC_PICTURE}/${data?.settings?.favicon}`, // Əgər apple-touch-icon da eynidirsə
     },
     openGraph: {
       title: data?.portfolio?.name,

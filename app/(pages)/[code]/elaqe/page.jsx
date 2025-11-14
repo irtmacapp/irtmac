@@ -20,8 +20,8 @@ export async function generateMetadata({ params }) {
     title: data?.settings?.title,
     description: data?.settings?.description,
     icons: {
-      icon: "/fav.png", // Dinamik favicon URL-i
-      apple: "/fav.png", // Əgər apple-touch-icon da eynidirsə
+      icon: `${process.env.NEXT_PUBLIC_PICTURE}/${data?.settings?.favicon}`, // Dinamik favicon URL-i
+      apple: `${process.env.NEXT_PUBLIC_PICTURE}/${data?.settings?.favicon}`, // Əgər apple-touch-icon da eynidirsə
     },
     openGraph: {
       title: data?.settings?.title,
@@ -52,14 +52,11 @@ export default async function page({ params }) {
       <Contact
         contact={data_translate?.contact}
         contact_1={data_translate?.contact_1}
-        teklif_1={data_translate?.teklif}
-        irad_1={data_translate?.irad}
-        sikayet_1={data_translate?.sikayet}
         adSoyad_1={data_translate?.adSoyad}
         mesaj_1={data_translate?.mesaj}
         sending_1={data_translate?.sending}
         send_1={data_translate?.send}
-        phones_1={data_translate?.phones}
+        phones_1={data_translate?.phones_1}
         emails_1={data_translate?.email}
         map_1={data_translate?.map}
         contact_text_2={data_translate?.contact_text_2}
