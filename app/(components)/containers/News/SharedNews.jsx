@@ -1,3 +1,4 @@
+"use client";
 import { FaFacebook, FaLinkedinIn, FaLink } from "react-icons/fa";
 
 import { FacebookShareButton, LinkedinShareButton } from "react-share";
@@ -6,7 +7,7 @@ import Swal from "sweetalert2";
 const SharedNews = ({ params, title, copy1, share }) => {
   const href = `${process.env.NEXT_PUBLIC_SITE_NAME}/${params?.code}/xeberler/${params?.id}/${params?.slug}`;
 
-  const copyEmail = () => {
+  function copyEmail() {
     const emailElement = window?.location?.href;
     if (emailElement) {
       const href = emailElement;
@@ -14,24 +15,24 @@ const SharedNews = ({ params, title, copy1, share }) => {
         navigator.clipboard
           .writeText(href)
           .then(() => {
-            Swal.fire(`${copy1} `, `${href}`, "success");
+            Swal.fire(`${copy1}`, `${href}`, "success");
           })
           .catch((err) => {
             console.error("Error:", err);
           });
       }
     }
-  };
+  }
 
   return (
     <>
-      <div className="fixed top-[300px] right-[40px] z-50">
-        <div className=" border border-[#C5CEE0] lg:w-full  z-30 bg-white mr-7 p-4 lg:mr-0  w-max">
-          <h4 className="text-black font-medium text-lg mb-6 lg:text-sm">
+      <div className="fixed top-[500px] right-[40px] z-50">
+        <div className=" border border-[#C5CEE0] lg:w-full  z-30 bg-white mr-7 px-[30px] py-[16px] lg:mr-0 rounded-[20px]  w-max">
+          <h4 className="text-[#002d74] font-semibold  text-[14px] mb-6 ">
             {share}
           </h4>
-          <ul className="flex flex-col lg:flex-row gap-2 justify-center lg:justify-around items-center lg:w-full">
-            <li className="bg-[#003B71] rounded-full p-[10px] lg:p-[8px] mb-4 cursor-pointer lg:mb-0 flex justify-center items-center">
+          <ul className="flex flex-col lg:flex-row gap-[16px] justify-center lg:justify-around items-center lg:w-full">
+            <li className="bg-[#009ade] rounded-full p-[10px] lg:p-[8px] mb-4 cursor-pointer lg:mb-0 flex justify-center items-center">
               <FacebookShareButton
                 url={href}
                 title={title}
@@ -42,7 +43,7 @@ const SharedNews = ({ params, title, copy1, share }) => {
               </FacebookShareButton>
             </li>
 
-            <li className="bg-[#003B71] rounded-full p-[10px] lg:p-[8px] mb-4 cursor-pointer lg:mb-0 flex justify-center items-center">
+            <li className="bg-[#009ade] rounded-full p-[10px] lg:p-[8px] mb-4 cursor-pointer lg:mb-0 flex justify-center items-center">
               <LinkedinShareButton
                 url={href}
                 title={title}
@@ -53,7 +54,7 @@ const SharedNews = ({ params, title, copy1, share }) => {
               </LinkedinShareButton>
             </li>
             <li
-              className="bg-[#003B71] rounded-full p-[10px] lg:p-[8px] cursor-pointer lg:mb-0"
+              className="bg-[#009ade] rounded-full p-[10px] lg:p-[8px] cursor-pointer lg:mb-0"
               onClick={copyEmail}
             >
               <FaLink className="text-2xl lg:text-xl  text-white" />

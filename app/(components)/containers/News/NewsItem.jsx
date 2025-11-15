@@ -2,8 +2,21 @@ import Image from "next/image";
 import Link from "next/link";
 
 import AnimatedButton from "../../global_containers/AnimatedButton/AnimatedButton";
+import SharedNews from "./SharedNews";
 
-const NewsItem = ({ href, img, readmore, data, name, text, news_title }) => {
+const NewsItem = ({
+  href,
+  img,
+  readmore,
+  data,
+  name,
+  text,
+  news_title,
+  show = false,
+  copy1 = "",
+  params1 = "",
+  share = "",
+}) => {
   return (
     <div className="col-span-4 xl:col-span-4 lg:col-span-6 md:col-span-12  h-full">
       <div className="flex flex-col h-full  p-[16px] bg-[#f0f6f9] rounded-[20px]">
@@ -47,6 +60,9 @@ const NewsItem = ({ href, img, readmore, data, name, text, news_title }) => {
           </div>
         </div>
       </div>
+      {show === true && (
+        <SharedNews copy1={copy1} title={name} params={params1} share={share} />
+      )}
     </div>
   );
 };

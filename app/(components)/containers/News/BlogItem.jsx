@@ -8,10 +8,12 @@ const BlogItem = ({
   random_blogs,
   params,
   other_blogs,
-  longtext,
   count1,
   showmore2,
   news_title,
+  copy1,
+  params1,
+  share,
 }) => {
   return (
     <>
@@ -56,6 +58,10 @@ const BlogItem = ({
                     text={cur?.text}
                     readmore={showmore2}
                     news_title={news_title}
+                    show={true}
+                    copy1={copy1}
+                    params1={params1}
+                    share={share}
                   />
                 );
               })}

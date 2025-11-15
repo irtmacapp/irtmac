@@ -61,6 +61,9 @@ export default async function page({ params }) {
         showmore={data_translate?.showmore}
         count1={data_translate?.count1}
         news_title={data_translate?.news_title}
+        copy1={data_translate?.copy1}
+        params1={params}
+        share={data_translate?.share}
       />
 
       <Footer data={data_footer} params={params} />
