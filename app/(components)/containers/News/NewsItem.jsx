@@ -1,14 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import { handleScrollToBottom } from "../../handleScrollToBottom/handleScrollToBottom";
+
 import AnimatedButton from "../../global_containers/AnimatedButton/AnimatedButton";
 
 const NewsItem = ({ href, img, readmore, data, name, text, news_title }) => {
   return (
-    <div
-      onClick={handleScrollToBottom}
-      className="col-span-4 xl:col-span-4 lg:col-span-6 md:col-span-12  h-full"
-    >
+    <div className="col-span-4 xl:col-span-4 lg:col-span-6 md:col-span-12  h-full">
       <div className="flex flex-col h-full  p-[16px] bg-[#f0f6f9] rounded-[20px]">
         <Image
           width={1000}

@@ -5,7 +5,7 @@ import "swiper/css";
 import Image from "next/image";
 import { useState } from "react";
 
-const ArrowIcon = ({ className }) => (
+export const ArrowIcon = ({ className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"

@@ -35,31 +35,65 @@ const Header = ({ params, data_translate, data_footer }) => {
       id: 1,
       title: `${data_translate?.header_1_text}`,
       href: `/${params?.code}`,
+      subMenu: null,
     },
     {
       id: 2,
       title: `${data_translate?.header_2_text}`,
-      href: `/${params?.code}/haqqimizda`,
+      href: null,
+      subMenu: [
+        {
+          id: 1,
+          title: `${data_translate?.header_2_text}`,
+          href: `/${params?.code}/haqqimizda`,
+        },
+        {
+          id: 2,
+          title: `${data_translate?.rehber}`,
+          href: `/${params?.code}/rehberin-muracieti`,
+        },
+      ],
     },
     {
       id: 3,
       title: `${data_translate?.header_3_text}`,
       href: `/${params?.code}/telimler`,
+      subMenu: null,
     },
     {
       id: 4,
       title: `${data_translate?.header_4_text}`,
       href: `/${params?.code}/telimciler`,
+      subMenu: null,
     },
     {
       id: 5,
       title: `${data_translate?.header_5_text}`,
-      href: `/${params?.code}/media-merkezi`,
+      href: null,
+      subMenu: [
+        {
+          id: 1,
+          title: `${data_translate?.header_5_text}`,
+          href: `/${params?.code}/media-merkezi`,
+        },
+        {
+          id: 2,
+          title: `${data_translate?.blog}`,
+          href: `/${params?.code}/xeberler`,
+        },
+      ],
     },
     {
       id: 6,
+      title: `${data_translate?.fag}`,
+      href: `/${params?.code}/faq`,
+      subMenu: null,
+    },
+    {
+      id: 7,
       title: `${data_translate?.header_6_text}`,
       href: `/${params?.code}/elaqe`,
+      subMenu: null,
     },
   ];
 
@@ -283,11 +317,30 @@ const Header = ({ params, data_translate, data_footer }) => {
                   return (
                     <li
                       key={item.id}
-                      className="px-4 xl:px-2 2xl:px-2 child_li w-max relative text-white font-['TTForsTrial-Medium']"
+                      className="px-4 xl:px-2 2xl:px-2 child_li w-max trans relative text-white font-['TTForsTrial-Medium']"
                     >
-                      <Link className="w-max text-[14px]" href={item.href}>
-                        {item.title}
-                      </Link>
+                      {item?.href === null ? (
+                        <h3 className="w-max text-[14px] cursor-pointer">
+                          {item.title}
+                        </h3>
+                      ) : (
+                        <Link className="w-max text-[14px]" href={item?.href}>
+                          {item.title}
+                        </Link>
+                      )}
+
+                      {item?.subMenu?.length > 0 && (
+                        <ul className="absolute opacity-0 invisible trans child_li_ul overflow-hidden top-[28px] w-max header_border left-[-20px] z-50 bg-[#ffff] css-box-shadow rounded-[7px]">
+                          {item?.subMenu?.map((cur, i) => (
+                            <li
+                              key={cur?.id || i}
+                              className="text-[#009ade] text-[16px] px-[20px] py-[10px] hover:bg-[#009ade] trans hover:text-white"
+                            >
+                              <Link href={cur?.href}>{cur?.title}</Link>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
 
                       {isActive && (
                         <span className="absolute left-[50%] translate-x-[-50%] -bottom-3 w-[48px]  h-[2px] bg-[#002D74]"></span>
@@ -323,7 +376,7 @@ const Header = ({ params, data_translate, data_footer }) => {
                       <div className="absolute  mt-6 right-[-30px] top-[8px] z-[100] h-[50px] flex flex-col text-left items-center justify-center ">
                         {myLang?.map((lang, index) => (
                           <button
-                            className={` z-[200] capitalize text-[15px] xl:text-[13px] transitions border border-solid border-blue_gray-100 overflow-hidden px-6 py-1 rounded-lg bg-white-A700 hover:bg-[#5D9733] tran hover:text-white-A700 `}
+                            className={`z-[200] capitalize text-[15px] xl:text-[13px] transitions border border-solid border-blue_gray-100 overflow-hidden px-6 py-1 rounded-lg bg-white-A700 hover:bg-[#5D9733] tran hover:text-white-A700 `}
                             key={index}
                             onClick={() => langSwitcher(lang)}
                           >

@@ -1,73 +1,63 @@
-const Pagination = ({ totalPage, currentPage, onPageChange }) => {
+// MyPagination.js
+import Link from "next/link";
+import React from "react";
 
-  const maxPageNumbersToShow = totalPage;
+// This is now a Server Component! No "use client" needed.
+const MyPagination = ({ totalPage, currentPage, basePath }) => {
+  const pageNumbers = [];
 
-  const getPageNumbers = () => {
-    const pages = [];
-    for (let i = 1; i <= totalPage; i++) {
-      if (
-        i === 1 ||
-        i === totalPage ||
-        (i >= currentPage - maxPageNumbersToShow &&
-          i <= currentPage + maxPageNumbersToShow)
-      ) {
-        pages.push(i);
-      }
-    }
-    return pages;
-  };
+  for (let i = 1; i <= totalPage; i++) {
+    pageNumbers.push(i);
+  }
 
-  const handlePageChange = (newPage) => {
-    onPageChange(newPage);
-  };
-
-  const pageNumbers = getPageNumbers();
+  // Ensure currentPage is a number for comparisons
+  const currentNumPage = Number(currentPage);
 
   return (
-    <div className="flex justify-center  mt-5  pt-5 lg:flex-col ">
-      <div className="flex justify-center gap-[20px] items-center w-max px-11 py-2 lg:mb-4 border border-[#E9ECF4]">
-        <button
-          onClick={() => handlePageChange(currentPage - 1)}
-          disabled={currentPage === 1}
-          className="px-3 py-2  rounded-md flex items-center gap-2 font-medium  tran lg:text-sm"
+    <div className="flex justify-center mt-5 pt-5">
+      <div className="flex justify-center gap-[20px] items-center w-max px-11 py-2 border border-[#E9ECF4]">
+        {/* Previous Page Link */}
+        <Link
+          href={`${basePath}?page=${currentNumPage - 1}`}
+          className={
+            currentNumPage === 1 ? "pointer-events-none opacity-50" : ""
+          }
+          aria-disabled={currentNumPage === 1}
         >
           <img src="/arrow-narrow-left.svg" alt="arrow" />
-        </button>
-        <div className="flex items-center gap-2  lg:w-full lg:justify-center">
-          {pageNumbers?.map((pageNum, index) => (
-            <div key={pageNum}>
-              {index > 0 && pageNumbers[index - 1] < pageNum - 1 && (
-                <span className="mr-2">...</span>
-              )}
-              <button
-                onClick={() => handlePageChange(pageNum)}
-                className={`px-4 lg:px-2 py-2 lg:py-1 font-normal hover:text-[#E1251B] tran ${
-                  currentPage === pageNum ? "text-[#E1251B] font-bold" : ""
-                } rounded-md`}
-              >
-                {pageNum}
-              </button>
-              {index < pageNumbers.length - 1 &&
-                pageNumbers[index + 1] > pageNum + 1}
-            </div>
+        </Link>
+
+        <div className="flex items-center gap-2">
+          {pageNumbers.map((pageNum) => (
+            <Link
+              key={pageNum}
+              href={`${basePath}?page=${pageNum}`}
+              className={`px-4 lg:px-2 py-2 lg:py-1 text-[14px] font-normal hover:text-[#D5BA8C] header_tr ${
+                currentNumPage === pageNum ? "text-[#D5BA8C] font-bold" : ""
+              } rounded-md`}
+            >
+              {pageNum}
+            </Link>
           ))}
         </div>
-        <div>
-          <button
-            onClick={() => handlePageChange(currentPage + 1)}
-            disabled={currentPage === totalPage}
-            className="px-3 py-2  rounded-md flex items-center gap-2 font-medium tran lg:text-sm"
-          >
-            <img
-              className="rotate-[-180deg]"
-              src="/arrow-narrow-left.svg"
-              alt="arrow"
-            />
-          </button>
-        </div>
+
+        {/* Next Page Link */}
+        <Link
+          href={`${basePath}?page=${currentNumPage + 1}`}
+          className={
+            currentNumPage === totalPage ? "pointer-events-none opacity-50" : ""
+          }
+          aria-disabled={currentNumPage === totalPage}
+        >
+          <img
+            className="rotate-[-180deg]"
+            src="/arrow-narrow-left.svg"
+            alt="arrow"
+          />
+        </Link>
       </div>
     </div>
   );
 };
 
-export default Pagination;
+export default MyPagination;

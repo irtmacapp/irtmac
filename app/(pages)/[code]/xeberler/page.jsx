@@ -2,15 +2,16 @@ import News from "@/app/(components)/containers/News/News";
 import Footer from "@/app/(components)/layout/Footer/Index";
 import Header from "@/app/(components)/layout/Header/Index";
 import {
+  fetchData,
   fetchFooterSettings,
   fetchTranslations,
 } from "@/app/fetch/GlobalFetch";
 
-const getData = async (params) => {
+const getData = async (params, page) => {
   const data_footer = await fetchFooterSettings(params?.code);
   const data_translate = await fetchTranslations(params?.code);
-
-  return { data_footer, data_translate };
+  const blogs = await fetchData(params?.code, `blogs?page=${page}`);
+  return { data_footer, data_translate, blogs };
 };
 
 export async function generateMetadata({ params }) {
@@ -40,8 +41,12 @@ export async function generateMetadata({ params }) {
   };
 }
 
-export default async function page({ params }) {
-  const { data_footer, data_translate } = await getData(params);
+export default async function page({ params, searchParams }) {
+  const currentPage = searchParams?.page || "1";
+  const { data_footer, data_translate, blogs } = await getData(
+    params,
+    currentPage
+  );
   return (
     <>
       <Header
@@ -50,9 +55,14 @@ export default async function page({ params }) {
         data_footer={data_footer}
       />
       <News
+        showmore={data_translate?.readmore}
         params={params}
+        blogs={blogs?.data}
+        pagination={blogs?.pagination}
         count1={data_translate?.count1}
-        news={data_translate?.blog}
+        blog_title={data_translate?.blog}
+        header_13_text={data_translate?.header_13_text}
+        news_title={data_translate?.news_title}
       />
       <Footer data={data_footer} params={params} />
     </>

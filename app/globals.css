@@ -60,6 +60,13 @@ html.active {
   height: 7em;
 }
 
+
+.child_li:hover .child_li_ul {
+  opacity: 1;
+  visibility: visible;
+}
+
+
 .pencil__body1,
 .pencil__body2,
 .pencil__body3,
@@ -256,7 +263,7 @@ html.active {
   object-fit: cover;
 }
 
-.header-colors .child_li,
+
 .parent_li ul,
 .afterhover_ul li {
   transition: all 0.3s linear;
@@ -452,6 +459,10 @@ html.active {
 .css-box-shadow {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
     rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
+.header_border li:not(:last-child) {
+  border-bottom: 1px solid #009ade;
 }
 
 .spinner {
@@ -763,18 +774,7 @@ input:-webkit-autofill:active {
   transform: translateX(-50%) translateY(-50%);
 }
 
-.header-active .child_li img {
-  filter: invert(143%) sepia(133%) saturate(30%) hue-rotate(395deg) brightness(180%) contrast(102%);
-}
 
-.header-active .burger svg {
-  filter: invert(143%) sepia(133%) saturate(30%) hue-rotate(395deg) brightness(180%) contrast(102%);
-}
-
-.header-active .child_li a,
-.header-active .parent_li p {
-  color: #fff;
-}
 
 .header-active .site_langs {
   color: #fff;

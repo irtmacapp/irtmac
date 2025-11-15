@@ -4,7 +4,7 @@ import Link from "next/link";
 const AnimatedButton = ({ leanmore, href }) => {
   return (
     <Link href={href} className="">
-      <button class="cta flex gap-[20px] group-hover:before:w-full group-hover:before:bg-[#002D74]">
+      <button className="cta flex gap-[20px] group-hover:before:w-full group-hover:before:bg-[#002D74]">
         <span className="group-hover:text-white">{leanmore}</span>
         <Image
           width={16}

@@ -7,7 +7,7 @@ const Bredcump = ({ name, longtext, href }) => {
         <div className="flex w-full justify-between items-center">
           <h3 className="text-[#003B71] text-[36px] ">{name}</h3>
 
-          <span className="h-[1px] w-[85%]  bg-[#B4C1D9] mr-[-30px]"></span>
+          <span className="h-[1px] w-[82%]  bg-[#B4C1D9] mr-[-30px]"></span>
         </div>
         <div></div>
 
