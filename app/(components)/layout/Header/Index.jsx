@@ -85,7 +85,7 @@ const Header = ({ params, data_translate, data_footer }) => {
     },
     {
       id: 6,
-      title: `${data_translate?.fag}`,
+      title: `${data_translate?.faq_header}`,
       href: `/${params?.code}/faq`,
       subMenu: null,
     },

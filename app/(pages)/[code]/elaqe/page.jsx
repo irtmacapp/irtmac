@@ -66,6 +66,7 @@ export default async function page({ params }) {
         settingsEmail={data_footer?.settings?.email}
         seetingsAdress={data_footer?.settings?.adresslang}
         map={data_footer?.settings?.map}
+        grafig={data_footer?.settings?.grafig}
       />
       <Footer data={data_footer} params={params} />
     </>

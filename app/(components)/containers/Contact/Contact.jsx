@@ -19,6 +19,7 @@ const Contact = ({
   settingsNumber,
   settingsEmail,
   seetingsAdress,
+  grafig,
 }) => {
   return (
     <>
@@ -58,6 +59,9 @@ const Contact = ({
               referRerPolicy="no-referrer-when-downgrade"
               className="w-full h-[500px] overflow-hidden rounded-[20px]"
             ></iframe>
+            <span className="w-[900px] py-[12px] css-box-shadow font-semibold absolute bottom-[40px] left-1/2 z-30 -translate-x-1/2 flex items-center justify-center text-[24px] text-[#002d74] bg-[#fff] rounded-[90px]">
+              {grafig}
+            </span>
           </div>
         </MaxWidth>
       </section>
