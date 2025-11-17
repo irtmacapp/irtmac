@@ -8,7 +8,6 @@ const Trainers = ({ data, trainers_short, trainers_long, seemore, params }) => {
       <MaxWidth>
         <Bredcump
           name={trainers_short}
-          seeall={seemore}
           href={`${params}/telimciler`}
           longtext={trainers_long}
         />

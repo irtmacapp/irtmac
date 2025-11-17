@@ -6,7 +6,7 @@ const Leader = ({ data }) => {
     <>
       <section className="mt-[280px] mb-[100px]">
         <MaxWidth>
-          <h3 className="text-center text-[#003B71] font-semibold text-4xl xl:text-2xl mb-10">
+          <h3 className="text-center text-[#003B71] font-semibold text-[36px] mb-10">
             {data?.rehberin_muracieti?.title}
           </h3>
           <div className="flex flex-col mb-[70px] justify-center  items-center">

@@ -1,31 +1,25 @@
+import Image from "next/image";
 import Link from "next/link";
-import { handleScrollToBottom } from "../../handleScrollToBottom/handleScrollToBottom";
+import AnimatedButton from "../../global_containers/AnimatedButton/AnimatedButton";
 
-const PortfolioItem = ({ id, href, title, readmore }) => {
+const PortfolioItem = ({ href, title, readmore, img, tag }) => {
   return (
-    <Link
-      key={id}
-      href={href}
-      onClick={handleScrollToBottom}
-      className="col-span-4 lg:col-span-6 md:col-span-12 border bg-[#E7EFF7] border-[#E7EFF7] services_group  flex justify-between flex-col  "
-    >
-      <div className=" py-8 px-8 lg:py-4 lg:px-4 flex flex-col text-[#003B71] relative overflow-hidden top">
-        <h4 className="font-medium text-2xl lg:text-lg mb-3 line-clamp-2">
+    <div className="col-span-4 lg:col-span-6 md:col-span-12 flex flex-col bg-[#f0f6f9]  rounded-[20px]">
+      <Image width={10000} height={267} alt={title} src={img} />
+      <div className=" flex h-full items-center justify-between flex-col px-[24px] py-[24px]">
+        <h4 className="font-semibold text-[24px] text-[#003b71] text-center ">
           {title}
         </h4>
-        <img
-          src="/absolute_pic.svg"
-          className="absolute top-0 right-[-100%] h-full"
-          alt="absolute_pic"
-        />
+        <div className="flex justify-between items-center w-full pt-[20px]">
+          <span className="bg-[#009ade] px-[20px] py-[12px] text-center text-white text-[14px] rounded-[70px]">
+            {tag}
+          </span>
+          <div>
+            <AnimatedButton leanmore={readmore} href={href} />
+          </div>
+        </div>
       </div>
-      <div className="bg-[#fff] flex py-3 px-8 justify-between items-center bottom">
-        <h3 className="text-[#003B71]">{readmore}</h3>
-        <span>
-          <img src="/readmore/readmore.svg" alt="readmore" />
-        </span>
-      </div>
-    </Link>
+    </div>
   );
 };
 

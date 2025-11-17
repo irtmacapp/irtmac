@@ -57,6 +57,7 @@ export default async function page({ params }) {
       <Portfolio
         data_cat={data_kateqoriya}
         portfolio={data_translate?.portfolio}
+        media_long={data_translate?.media_long}
         params={params?.code}
         readmore={data_translate?.readmore}
       />

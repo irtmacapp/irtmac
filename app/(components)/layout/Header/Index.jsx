@@ -253,7 +253,7 @@ const Header = ({ params, data_translate, data_footer }) => {
               {data_footer?.settings?.description}
             </p>
             <div className="flex gap-[20px] items-center">
-              <button
+              {/* <button
                 onClick={openSearch}
                 className=" px-4 py-2  cursor-pointer "
               >
@@ -262,7 +262,7 @@ const Header = ({ params, data_translate, data_footer }) => {
                   src="/header_search.svg"
                   alt="search"
                 />
-              </button>
+              </button> */}
               <div>
                 <Lang
                   toggle={() => setOpen(!open)}
