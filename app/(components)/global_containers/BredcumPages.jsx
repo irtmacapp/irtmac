@@ -7,7 +7,7 @@ const BredcumPages = ({ name, longtext, classesName = "" }) => {
         {name}
       </h3>
       <p
-        className={`text-[#009ade] text-[24px] lg:text-[18px] lg:text-center ${classesName}`}
+        className={`text-[#009ade] text-[24px] lg:text-[18px] md:text-[15px] lg:text-center ${classesName}`}
       >
         {longtext}
       </p>

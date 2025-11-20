@@ -28,7 +28,7 @@ export async function generateMetadata({ params }) {
       title: data?.portfolio?.name,
       description: data?.portfolio?.meta_descrtextiption,
       url: `/logo.png`,
-      siteName: "RIGHTWELLTON.AZ",
+      siteName: "irtmac.az",
       images: [
         {
           url: `/logo.png`,

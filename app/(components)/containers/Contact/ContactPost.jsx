@@ -139,34 +139,34 @@ const ContactPost = ({
           </div>
         </form>
       </div>
-      <div className=" flex justify-center items-start ">
-        <div className="bg-[#009ade] w-full  px-[120px] xl:px-[20px] py-[40px] mx-[120px] lg:mx-[20px] md:mx-[10px] rounded-bl-[30px] rounded-br-[30px]">
+      <div className=" flex justify-center items-start md:mt-[20px]">
+        <div className="bg-[#009ade] w-full  px-[120px] xl:px-[20px] py-[40px] mx-[120px] lg:mx-[20px] md:mx-[10px] rounded-bl-[30px] rounded-br-[30px] md:rounded-[30px]">
           <div className="grid grid-cols-12  ">
-            <div className="flex flex-col gap-[16px] col-span-4 md:col-span-12 md:mb-[20px]">
+            <div className="flex flex-col md:items-center gap-[16px] col-span-4 md:col-span-12 md:mb-[20px]">
               <Image width={24} height={24} alt="map" src={"/location.svg"} />
               <h6 className="text-[14px] text-white">{map}</h6>
               <a
-                className="text-white font-semibold text-[18px] lg:text-[12px] w-[80%]"
+                className="text-white font-semibold text-[18px] lg:text-[12px] w-[80%] md:w-full md:text-center"
                 href="#"
               >
                 {seetingsAdress}
               </a>
             </div>
-            <div className="flex flex-col gap-[16px] col-span-4 md:col-span-12 md:mb-[20px]">
+            <div className="flex flex-col md:items-center gap-[16px] col-span-4 md:col-span-12 md:mb-[20px]">
               <Image width={24} height={24} alt="map" src={"/phone.svg"} />
               <h6 className="text-[14px] text-white">{phones}</h6>
               <a
-                className="text-white font-semibold text-[18px] lg:text-[12px]"
+                className="text-white font-semibold text-[18px] lg:text-[12px]  md:text-center"
                 href={`tel:${settingsNumber}`}
               >
                 {settingsNumber}
               </a>
             </div>
-            <div className="flex flex-col gap-[16px] col-span-4 md:col-span-12">
+            <div className="flex flex-col md:items-center gap-[16px] col-span-4 md:col-span-12">
               <Image width={24} height={24} alt="map" src={"/email.svg"} />
               <h6 className="text-[14px] text-white">{emails}</h6>
               <a
-                className="text-white font-semibold text-[18px] lg:text-[12px]"
+                className="text-white font-semibold text-[18px] lg:text-[12px]  md:text-center"
                 href={`mailto:${settingsEmail}`}
               >
                 {settingsEmail}

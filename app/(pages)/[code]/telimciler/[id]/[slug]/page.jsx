@@ -31,8 +31,8 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: `${data_footer?.settings?.title} - ${data_telim?.name_vr}`,
       description: data_footer?.settings?.meta_description,
-      url: "https://rightwellton.az/",
-      siteName: "RIGHTWELLTON.AZ",
+      url: "https://irtmac.az/",
+      siteName: "irtmac.az",
       images: [
         {
           url: `${process.env.NEXT_PUBLIC_PICTURE}/${data_footer?.settings?.logo}`,

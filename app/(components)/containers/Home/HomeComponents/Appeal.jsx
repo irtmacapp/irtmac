@@ -71,7 +71,7 @@ const Appeal = ({ data, data_translate }) => {
   };
 
   return (
-    <section className="my-[80px] lg:px-[20px]">
+    <section className="my-[80px] lg:mt-[40px] lg:px-[20px]">
       <MaxWidth>
         <div className="mx-[120px] xl:mx-[60px] lg:mx-0 bg-[#f0f6f9] rounded-[30px] relative py-[40px] px-[120px] xl:px-[40px] md:px-[20px]">
           <Image

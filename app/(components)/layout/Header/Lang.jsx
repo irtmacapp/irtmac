@@ -40,7 +40,7 @@ const Lang = ({ toggle, switchLang, langs, scrolledFromTop }) => {
   };
 
   return (
-    <div className="relative text-white px-4 py-1 ">
+    <div className="relative text-white px-4 py-1 md:px-1 ">
       <div
         onClick={toggle}
         className="flex items-center cursor-pointer justify-center"

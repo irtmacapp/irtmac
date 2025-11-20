@@ -31,7 +31,7 @@ export async function generateMetadata({ params }) {
       title: `${data_footer?.settings?.title}- ${blogs?.blog?.name}`,
       description: blogs?.blog?.text,
       url: `${process.env.NEXT_PUBLIC_SITE_NAME}/${params?.code}/xeberler/${params.id}`,
-      siteName: "RIGHTWELLTON.AZ",
+      siteName: "irtmac.az",
       images: [
         {
           url: `${process.env.NEXT_PUBLIC_PICTURE}/${blogs?.blog?.cover}`,

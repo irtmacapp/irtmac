@@ -10,12 +10,12 @@ const MyAccordionItem = ({ handleToggle, active, faq }) => {
     <div className="rc-accordion-card">
       <div className="rc-accordion-header">
         <div
-          className={`rc-accordion-toggle py-[16px] px-[24px] ${
+          className={`rc-accordion-toggle py-[16px] px-[24px] md:px-[12px] ${
             active === faq?.id ? "active" : ""
           }`}
           onClick={() => handleToggle(faq?.id)}
         >
-          <h5 className="rc-accordion-title text-[#002d74] text-[16px] lg:text-[13px] font-['TTForsTrial-Medium']">
+          <h5 className="rc-accordion-title text-[#002d74] text-[16px] lg:text-[13px] md:w-[90%] font-['TTForsTrial-Medium']">
             {faq?.sual}
           </h5>
           {active === faq?.id ? (
@@ -55,10 +55,10 @@ const Fag = ({ data, fag }) => {
 
   return (
     <>
-      <section className="mt-[250px] 2xl:mt-[200px] lg:mt-[180px] md:mt-[120px] lg:px-[20px]  min-h-[65vh] lg:min-h-max">
+      <section className="mt-[250px] 2xl:mt-[200px] lg:mt-[180px] md:mt-[100px] lg:px-[20px]  min-h-[65vh] lg:min-h-max">
         <MaxWidth>
-          <div className="w-[900px] lg:w-full xl:px-10 lg:px-6 m-auto pt-10 faq mb-40 ">
-            <h3 className="text-[#003B71] font-bold text-[36px] lg:text-[25px] text-center mb-10">
+          <div className="w-[900px] lg:w-full xl:px-10 lg:px-6 md:px-0 m-auto pt-10 faq mb-40 ">
+            <h3 className="text-[#003B71] font-bold text-[36px] lg:text-[25px] md:text-[20px] text-center mb-10">
               {fag}
             </h3>
             {data?.faqs?.map((faq) => (

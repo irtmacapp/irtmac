@@ -25,7 +25,7 @@ const Counters = ({ data }) => {
   ];
 
   return (
-    <section className="mt-[80px] lg:mt-[40px] lg:px-[20px]">
+    <section className="mt-[80px] md:mt-[40px] lg:px-[20px]">
       <MaxWidth>
         <div className="grid grid-cols-12 gap-[60px] lg:gap-0">
           <div className="col-span-6 lg:col-span-12 flex flex-col justify-center ">

@@ -5,7 +5,7 @@ import SwiperSlider from "./SwiperSlider";
 
 const Customers = ({ customers, customers_text, customers_long }) => {
   return (
-    <section className="my-[80px] lg:mx-[20px]">
+    <section className="my-[80px] lg:my-[40px] lg:mx-[20px]">
       <div className="bg-[#f0f6f9] py-[40px] lg:px-[20px] relative rounded-[20px]">
         <span className="absolute -top-[50px] xl:-top-[40px] md:-top-[30px] left-[260px] xl:left-[60px] md:left-[30px] bg-[#f32735] flex justify-center items-center rounded-full p-[32px] xl:p-[20px]">
           <Image

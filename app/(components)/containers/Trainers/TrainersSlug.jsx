@@ -19,14 +19,14 @@ const TrainersSlug = ({ data }) => {
             <h3 className="text-[36px] lg:text-[24px] text-[#002d74] font-['TTForsTrial-Bold'] mb-[24px]">
               {data?.name_vr}
             </h3>
-            <p className="text-[24px] lg:text-[18px] text-[#002d74] w-[80%] lg:w-full lg:text-center">
+            <p className="text-[24px] lg:text-[18px] md:text-[14px] text-[#002d74] w-[80%] lg:w-full lg:text-center">
               {data?.position_vr}
             </p>
           </div>
         </div>
         <div className="mt-[60px] lg:mt-[25px] flex items-center justify-center text-center">
           <div
-            className="text-[24px] lg:text-[18px] text-[#002d74]"
+            className="text-[24px] lg:text-[18px] md:text-[14px] text-[#002d74]"
             dangerouslySetInnerHTML={{ __html: `${data?.text2}` }}
           />
         </div>

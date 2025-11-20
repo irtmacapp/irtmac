@@ -12,7 +12,7 @@ const HomeNews = ({
   readmore,
 }) => {
   return (
-    <section className="mb-[80px] lg:px-[20px]">
+    <section className="mb-[80px]  lg:px-[20px]">
       <MaxWidth>
         <Bredcump
           name={blog}

@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const HomeVideo = ({ data, params, readmore }) => {
   return (
-    <section className="mt-[80px] lg:px-[20px]">
+    <section className="mt-[80px] lg:mt-[40px] lg:px-[20px]">
       <MaxWidth>
         <div className="bg-[#002856] py-[40px] px-[100px] 2xl:px-[50px] lg:px-[20px] rounded-[30px] relative overflow-hidden">
           <div className="grid grid-cols-12 ">

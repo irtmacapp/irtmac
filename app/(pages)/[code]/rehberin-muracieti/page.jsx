@@ -26,8 +26,8 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: data?.settings?.title,
       description: data?.settings?.meta_description,
-      url: "https://rightwellton.az/",
-      siteName: "RIGHTWELLTON.AZ",
+      url: "https://irtmac.az/",
+      siteName: "irtmac.az",
       images: [
         {
           url: `${process.env.NEXT_PUBLIC_PICTURE}/${data?.settings?.logo}`,

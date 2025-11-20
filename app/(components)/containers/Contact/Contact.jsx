@@ -29,7 +29,7 @@ const Contact = ({
             {contact}
           </h3>
           <div className="flex items-center justify-center">
-            <p className="text-center text-[#008ade] text-[24px] lg:text-[18px] mb-10 w-[40%] lg:w-full">
+            <p className="text-center text-[#008ade] text-[24px] lg:text-[18px] md:text-[15px] mb-10 w-[40%] lg:w-full">
               {contact_1}
             </p>
           </div>
@@ -59,7 +59,7 @@ const Contact = ({
               referrerPolicy="no-referrer-when-downgrade"
               className="w-full h-[500px] lg:h-[300px] overflow-hidden rounded-[20px]"
             ></iframe>
-            <span className="w-[900px] lg:w-max lg:px-[50px] md:px-[20px] py-[12px] css-box-shadow font-semibold absolute bottom-[40px] left-1/2 z-30 -translate-x-1/2 flex items-center justify-center text-[24px] lg:text-[18px] text-[#002d74] bg-[#fff] rounded-[90px]">
+            <span className="w-[900px] lg:w-max lg:px-[50px] md:px-[20px] py-[12px] css-box-shadow font-semibold absolute bottom-[40px] left-1/2 z-30 -translate-x-1/2 flex items-center justify-center text-[24px] lg:text-[18px] md:text-[14px] text-[#002d74] bg-[#fff] rounded-[90px]">
               {grafig}
             </span>
           </div>

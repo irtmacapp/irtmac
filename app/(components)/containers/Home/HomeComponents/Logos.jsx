@@ -6,19 +6,19 @@ import Image from "next/image";
 import MaxWidth from "@/app/(components)/MaxWidth/MaxWidth";
 const HomeLogos = ({ data }) => {
   return (
-    <section className="lg:px-[20px]">
+    <section className="lg:px-[20px] mt-[80px] lg:mt-[40px] ">
       <MaxWidth>
-        <div className="mt-[80px] ">
+        <div className=" ">
           <Swiper
             slidesPerView={1}
             spaceBetween={10}
             pagination={{
               clickable: true,
             }}
-            // autoplay={{
-            //   delay: 4000,
-            //   disableOnInteraction: false,
-            // }}
+            autoplay={{
+              delay: 4000,
+              disableOnInteraction: false,
+            }}
             breakpoints={{
               440: {
                 slidesPerView: 2,
@@ -38,7 +38,7 @@ const HomeLogos = ({ data }) => {
               },
             }}
             loop={true}
-            // modules={[Autoplay]}
+            modules={[Autoplay]}
             className="mySwiper"
           >
             {data &&

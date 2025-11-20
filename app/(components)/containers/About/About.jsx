@@ -7,10 +7,10 @@ const About = ({ data }) => {
       <section className="mb-20 mt-[250px] 2xl:mt-[200px] lg:mt-[150px] md:mt-[120px] lg:px-[20px]">
         <MaxWidth>
           <div className="flex flex-col ">
-            <h3 className="text-[#002d74] text-[36px] xl:text-[25px]  mb-10 md:mb-[10px] font-bold text-center">
+            <h3 className="text-[#002d74] text-[36px] xl:text-[25px] md:text-[20px]  mb-10 md:mb-[10px] font-bold text-center">
               {data?.haqqimizda?.title}
             </h3>
-            <h3 className="text-[#002d74] text-[24px] xl:text-[18px] mb-10 text-center">
+            <h3 className="text-[#002d74] text-[24px] xl:text-[18px] md:text-[14px] mb-10 text-center">
               {data?.haqqimizda?.text2}
             </h3>
           </div>

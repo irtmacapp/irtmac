@@ -33,7 +33,7 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: `${data_footer?.settings?.title} - ${data_telim?.title}`,
       description: data_telim?.short_desc?.description,
-      url: "https://rightwellton.az/",
+      url: "https://irtmac.az/",
       siteName: "irtmac.az",
       images: [
         {
