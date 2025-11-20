@@ -53,7 +53,7 @@ const Lang = ({ toggle, switchLang, langs, scrolledFromTop }) => {
         </p>
       </div>
       {switchLang && (
-        <div className="absolute mt-6 top-[3.2rem] left-[-19px] lg:left-[-10px] z-[100] flex flex-col text-left overflow-hidden items-center justify-center bg-[#fff] box-shadow2  ">
+        <div className="absolute mt-6 md:mt-0 top-[3.2rem] left-[-19px] lg:left-[-10px] md:left-[-30px] md:top-[35px] z-[100] flex flex-col text-left overflow-hidden items-center justify-center bg-[#fff] box-shadow2  ">
           {selectedLangs?.map((lang, index) => (
             <button
               className="z-[50] capitalize text-[18px] text-[#002D74] border border-[#f4f6f6] lang_border gap-[12px] n  langText xl:text-[13px] hover:bg-[--orange] services_card_link shaodo11  py-3   trans  w-[110px] flex justify-center items-center lg:w-[88px] "
