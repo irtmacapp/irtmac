@@ -3,13 +3,13 @@ import MaxWidth from "../../MaxWidth/MaxWidth";
 
 const TrainersAll = ({ trainers_short, trainers_long, data, params }) => {
   return (
-    <section className="mt-[250px] min-h-[60vh] mb-[100px]">
+    <section className="mt-[250px] 2xl:mt-[200px] lg:mt-[180px] md:mt-[120px] min-h-[60vh] mb-[100px] lg:px-[20px]">
       <MaxWidth>
-        <h3 className="text-center text-[36px] text-[#002d74] font-['TTForsTrial-Bold'] mb-[24px]">
+        <h3 className="text-center text-[36px] lg:text-[25px] text-[#002d74] font-['TTForsTrial-Bold'] mb-[24px]">
           {trainers_short}
         </h3>
         <div className="text-center  flex items-center justify-center">
-          <p className="text-center text-[24px] text-[#002d74] w-[80%]">
+          <p className="text-center text-[24px] lg:text-[18px] text-[#002d74] w-[80%] lg:w-full">
             {trainers_long}
           </p>
         </div>

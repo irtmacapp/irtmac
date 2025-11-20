@@ -23,13 +23,13 @@ const Contact = ({
 }) => {
   return (
     <>
-      <section className=" mt-[250px] mb-[100px]">
+      <section className="mt-[250px] 2xl:mt-[200px] lg:mt-[180px] md:mt-[120px] lg:px-[20px] mb-[100px]">
         <MaxWidth>
-          <h3 className="text-center text-[#003B71] text-[36px] font-['TTForsTrial-Medium'] mb-6 capitalize">
+          <h3 className="text-center text-[#003B71] text-[36px] lg:text-[25px] font-['TTForsTrial-Medium'] mb-6 capitalize">
             {contact}
           </h3>
           <div className="flex items-center justify-center">
-            <p className="text-center text-[#008ade] text-[24px] mb-10 w-[40%] lg:w-full">
+            <p className="text-center text-[#008ade] text-[24px] lg:text-[18px] mb-10 w-[40%] lg:w-full">
               {contact_1}
             </p>
           </div>
@@ -56,10 +56,10 @@ const Contact = ({
               src={map}
               allowFullScreen=""
               loading="lazy"
-              referRerPolicy="no-referrer-when-downgrade"
-              className="w-full h-[500px] overflow-hidden rounded-[20px]"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="w-full h-[500px] lg:h-[300px] overflow-hidden rounded-[20px]"
             ></iframe>
-            <span className="w-[900px] py-[12px] css-box-shadow font-semibold absolute bottom-[40px] left-1/2 z-30 -translate-x-1/2 flex items-center justify-center text-[24px] text-[#002d74] bg-[#fff] rounded-[90px]">
+            <span className="w-[900px] lg:w-max lg:px-[50px] md:px-[20px] py-[12px] css-box-shadow font-semibold absolute bottom-[40px] left-1/2 z-30 -translate-x-1/2 flex items-center justify-center text-[24px] lg:text-[18px] text-[#002d74] bg-[#fff] rounded-[90px]">
               {grafig}
             </span>
           </div>

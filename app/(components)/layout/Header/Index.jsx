@@ -246,10 +246,10 @@ const Header = ({ params, data_translate, data_footer }) => {
 
   return (
     <>
-      <header className="bg-[#002D74]  py-[25px] absolute top-0 left-0 right-0 h-[80px] z-[305]">
+      <header className="bg-[#002D74]  py-[25px] 2xl:py-[10px] 2xl:h-[55px] md:h-[45px] 2xl:px-[20px] md:px-[10px] absolute top-0 left-0 right-0 h-[80px] z-[305]">
         <MaxWidth>
           <div className="flex justify-between items-center">
-            <p className="text-white text-[14px]">
+            <p className="text-white text-[14px] 2xl:text-[12px] md:text-[10px]">
               {data_footer?.settings?.description}
             </p>
             <div className="flex gap-[20px] items-center">
@@ -291,21 +291,21 @@ const Header = ({ params, data_translate, data_footer }) => {
       </header>
 
       <header
-        className={` w-full   rounded-br-[20px] rounded-bl-[20px]   left-0 right-0 header-tr z-[300] bg-[#009ADE] 
+        className={`w-full rounded-br-[20px]  rounded-bl-[20px] md:rounded-br-[0px] md:rounded-bl-[0px] left-0 right-0 header-tr z-[300] bg-[#009ADE] 
            ${
              scrolledFromTop
-               ? "fixed py-[26px] top-[0px]"
-               : "absolute py-[46px] top-[80px]"
+               ? "fixed py-[26px] top-[0px] md:py-[15px] md:px-[20px]"
+               : "absolute py-[46px] top-[80px] 2xl:py-[30px] md:py-[15px] 2xl:px-[20px] 2xl:top-[54px] md:top-[45px]"
            }`}
       >
         <MaxWidth>
           <nav className="  flex justify-between  ">
-            <div className="  flex items-center justify-center lg:pl-4">
+            <div className="  flex items-center justify-center md:justify-between lg:pl-4 md:pl-0">
               <Link href={`/${params?.code}`}>
                 <img
                   src={`${process.env.NEXT_PUBLIC_PICTURE}/${data_footer?.settings?.logob}`}
                   alt="header_logo_white"
-                  className="w-[212px] 2xl:w-[120px] xl:w-[80px] object-cover"
+                  className="w-[212px] 2xl:w-[120px]  object-cover"
                 />
               </Link>
             </div>
@@ -353,46 +353,18 @@ const Header = ({ params, data_translate, data_footer }) => {
             <div>
               <Link
                 href={`/${params?.code}/telimciler`}
-                className="bg-[#fff] py-[15px] px-[36px] text-[16px] uppercase text-['#002D74'] font-['TTForsTrial-Medium'] rounded-[60px]"
+                className="bg-[#fff] py-[15px] 2xl:py-[8px] lg:hidden px-[36px] text-[16px] uppercase text-[#002D74] font-['TTForsTrial-Medium'] rounded-[60px]"
               >
                 {data_translate?.header_4_text}
               </Link>
             </div>
 
-            <div className=" items-center lg:gap-5 hidden lg:flex">
-              <div
-                onClick={openSearch}
-                className="px-4 py-2 hidden lg:block child_li cursor-pointer border-[2px] border-[#E9ECF4] rounded-[48px] p-[2px]"
-              >
-                <img src="/search-blue.svg" className="w-[15px]" alt="search" />
-              </div>
-              <div className="w-max hidden lg:block ">
-                <Lang
-                  toggle={() => setOpen(!open)}
-                  langs={langs}
-                  scrolledFromTop={scrolledFromTop}
-                  switchLang={
-                    open && (
-                      <div className="absolute  mt-6 right-[-30px] top-[8px] z-[100] h-[50px] flex flex-col text-left items-center justify-center ">
-                        {myLang?.map((lang, index) => (
-                          <button
-                            className={`z-[200] capitalize text-[15px] xl:text-[13px] transitions border border-solid border-blue_gray-100 overflow-hidden px-6 py-1 rounded-lg bg-white-A700 hover:bg-[#5D9733] tran hover:text-white-A700 `}
-                            key={index}
-                            onClick={() => langSwitcher(lang)}
-                          >
-                            {lang}
-                          </button>
-                        ))}
-                      </div>
-                    )
-                  }
-                />
-              </div>
+            <div className=" items-center hidden lg:flex">
               <div
                 onClick={openMobileMenu}
                 className="burger hidden lg:block mobile_header_open"
               >
-                <RxHamburgerMenu className="text-2xl cursor-pointer" />
+                <RxHamburgerMenu className="text-[25px] text-white cursor-pointer" />
               </div>
             </div>
           </nav>
@@ -406,7 +378,7 @@ const Header = ({ params, data_translate, data_footer }) => {
           onClick={closeMobileMenu}
           className="absolute top-10 right-10 cursor-pointer"
         >
-          <IoMdClose className="text-2xl" />
+          <IoMdClose className="text-[20px]" />
         </p>
         <ul className="flex flex-col gap-2">
           {mobileHeader &&
@@ -418,7 +390,7 @@ const Header = ({ params, data_translate, data_footer }) => {
                   className="relative"
                 >
                   {cur?.href === null ? (
-                    <h3 className=" flex text-lg capitalize items-center gap-2 cursor-pointer trans hover:text-[#003B71]">
+                    <h3 className=" flex text-[17px] capitalize items-center gap-2 cursor-pointer trans hover:text-[#003B71]">
                       {cur?.title}
                       <span>
                         {openCategory === cur?.title ? (
@@ -430,8 +402,8 @@ const Header = ({ params, data_translate, data_footer }) => {
                     </h3>
                   ) : (
                     <Link
-                      className="text-lg capitalize trans hover:text-[#003B71]"
-                      href={`/${cur?.href}`}
+                      className="text-[17px] capitalize trans hover:text-[#003B71]"
+                      href={`${cur?.href}`}
                     >
                       {cur?.title}
                     </Link>
@@ -453,8 +425,8 @@ const Header = ({ params, data_translate, data_footer }) => {
                               key={i}
                             >
                               <Link
-                                href={`/${params?.code}/${elem?.href}`}
-                                className="flex h-full w-full capitalize"
+                                href={`${elem?.href}`}
+                                className="flex h-full w-full capitalize text-[17px]"
                               >
                                 {elem?.title}
                               </Link>

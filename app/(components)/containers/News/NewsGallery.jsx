@@ -19,7 +19,7 @@ const NewsGallery = ({ images }) => {
   };
 
   return (
-    <div className="px-[120px] mt-[40px]">
+    <div className="px-[120px] xl:px-0 mt-[40px]">
       <div className=" rounded-[20px] overflow-hidden">
         <Swiper
           slidesPerView={1}

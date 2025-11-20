@@ -71,9 +71,9 @@ const Appeal = ({ data, data_translate }) => {
   };
 
   return (
-    <section className="my-[80px]">
+    <section className="my-[80px] lg:px-[20px]">
       <MaxWidth>
-        <div className="mx-[120px] bg-[#f0f6f9] rounded-[30px] relative py-[40px] px-[120px]">
+        <div className="mx-[120px] xl:mx-[60px] lg:mx-0 bg-[#f0f6f9] rounded-[30px] relative py-[40px] px-[120px] xl:px-[40px] md:px-[20px]">
           <Image
             width={1000}
             height={1000}
@@ -81,19 +81,22 @@ const Appeal = ({ data, data_translate }) => {
             src={"/contact_linear2.png"}
             className="w-full h-full absolute top-0 left-0 right-0 object-cover"
           />
-          <div className="grid grid-cols-12 gap-[40px]">
-            <div className="col-span-5 ">
-              <div className="flex flex-col">
-                <h3 className="text-[36px] font-['TTForsTrial-Medium'] text-[#003b71]">
+          <div className="grid grid-cols-12 gap-[40px] md:gap-0">
+            <div className="col-span-5 md:col-span-12">
+              <div className="flex flex-col md:mb-[20px]">
+                <h3 className="text-[36px] md:text-[25px] font-['TTForsTrial-Medium'] text-[#003b71]">
                   {data_translate?.muraciet}
                 </h3>
-                <p className="text-[14px] text-[#002d74] font-['TTForsTrial-Regular'] mt-[24px]">
+                <p className="text-[14px] md:text-[12px] text-[#002d74] font-['TTForsTrial-Regular'] mt-[24px]">
                   {data_translate?.muraciet_long}
                 </p>
               </div>
             </div>
-            <div className="col-span-7 relative z-40">
-              <form onSubmit={handleSubmit} className="w-full pl-[60px]">
+            <div className="col-span-7 md:col-span-12 relative z-40">
+              <form
+                onSubmit={handleSubmit}
+                className="w-full pl-[60px] md:pl-0"
+              >
                 <div className="flex flex-col gap-[16px]">
                   <div className="">
                     <input

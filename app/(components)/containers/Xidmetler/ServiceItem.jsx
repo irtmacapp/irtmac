@@ -7,11 +7,11 @@ const ServiceItem = ({ id, href, title, desc, newService, readmore, news }) => {
     <div
       key={id}
       onClick={handleScrollToBottom}
-      className="col-span-4 lg:col-span-6 group md:col-span-12 service_item trans bg-[#F0F6F9] py-[37px] px-[40px] rounded-[20px] relative h-full flex  justify-between flex-col hover:bg-[#009ADE]"
+      className="col-span-4 lg:col-span-6 group md:col-span-12 service_item trans bg-[#F0F6F9] py-[37px] px-[40px] rounded-[20px] relative h-full flex  justify-between flex-col hover:bg-[#009ADE] 2xl:px-[20px] 2xl:py-[20px]"
     >
       <Link
         href={href}
-        className="text-[#003B71] text-[24px] font-['TTForsTrial-Medium'] mb-[24px] group-hover:text-white trans"
+        className="text-[#003B71] text-[24px] 2xl:text-[18px] font-['TTForsTrial-Medium'] mb-[24px] group-hover:text-white trans"
       >
         {title}
       </Link>

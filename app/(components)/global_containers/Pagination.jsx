@@ -32,8 +32,8 @@ const MyPagination = ({ totalPage, currentPage, basePath }) => {
             <Link
               key={pageNum}
               href={`${basePath}?page=${pageNum}`}
-              className={`px-4 lg:px-2 py-2 lg:py-1 text-[14px] font-normal hover:text-[#D5BA8C] header_tr ${
-                currentNumPage === pageNum ? "text-[#D5BA8C] font-bold" : ""
+              className={`px-4 lg:px-2 py-2 lg:py-1 text-[14px] font-normal hover:text-[#009ade] header_tr ${
+                currentNumPage === pageNum ? "text-[#009ade] font-bold" : ""
               } rounded-md`}
             >
               {pageNum}

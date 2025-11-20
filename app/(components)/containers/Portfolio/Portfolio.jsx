@@ -37,12 +37,12 @@ const Portfolio = ({ data_cat, portfolio, params, readmore, media_long }) => {
 
   return (
     <>
-      <section className="mt-[250px] mb-[100px] min-h-[65vh]">
+      <section className="mt-[250px] 2xl:mt-[200px] lg:mt-[150px] md:mt-[120px] mb-[100px] min-h-[75vh] lg:px-[20px]">
         <MaxWidth>
-          <h3 className="text-[#003B71] font-bold text-[36px] mb-[10px] lg:mb-4 text-center capitalize">
+          <h3 className="text-[#003B71] font-bold text-[36px] xl:text-[25px] mb-[10px] lg:mb-4 text-center capitalize">
             {portfolio}
           </h3>
-          <h3 className="text-[#003B71] text-[24px] mb-12 lg:mb-4 text-center w-[60%] m-auto">
+          <h3 className="text-[#003B71] text-[24px] xl:text-[18px] lg:text-[15px] mb-12  text-center w-[60%] lg:w-full lg:mb-[30px] m-auto">
             {media_long}
           </h3>
           <Tabs
@@ -56,7 +56,7 @@ const Portfolio = ({ data_cat, portfolio, params, readmore, media_long }) => {
                 category?.categories?.map((cur, i) => (
                   <Tab
                     key={i}
-                    className="py-[10px] px-[34px] text-[16px] border lg:w-full rounded-[60px] border-[#009ade] transition-all"
+                    className="py-[10px] px-[34px]  text-[16px] border lg:w-full rounded-[60px] border-[#009ade] transition-all"
                     _selected={{ color: "white", bg: "#009ade" }}
                   >
                     {cur?.title}

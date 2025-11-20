@@ -3,7 +3,7 @@ import { toSlug } from "./Convert";
 
 const ServicesGroups = ({ data, params, readmore, news }) => {
   return (
-    <div className="grid grid-cols-12 gap-[24px] mt-[40px]">
+    <div className="grid grid-cols-12 gap-[24px] mt-[40px] md:mt-[20px]">
       {data &&
         data?.map((cur, i) => {
           const toSLug = toSlug(cur?.title);

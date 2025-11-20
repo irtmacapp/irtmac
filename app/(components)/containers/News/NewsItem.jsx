@@ -28,28 +28,30 @@ const NewsItem = ({
           priority
           className="img-fluid h-[240px] rounded-[20px] "
         />
-        <div className=" flex flex-col pt-[16px]  relative overflow-hidden  h-full">
+        <div className=" flex flex-col pt-[16px]  justify-between  relative overflow-hidden  h-full">
           <Link
             href={href}
-            className="text-[#003B71] font-['TTForsTrial-Medium'] text-[24px] line-clamp-2 leading-[100%] mb-[16px]"
+            className="text-[#003B71] font-['TTForsTrial-Medium'] text-[24px] xl:text-[18px] lg:text-[16px] line-clamp-2 leading-[100%] mb-[10px]"
           >
             {name}
           </Link>
           <div
             key={text}
-            className="text-[#003B71] line-clamp-3 text-[14px] mb-[40px]"
+            className="text-[#003B71] line-clamp-3 text-[14px] xl:text-[12px]"
             dangerouslySetInnerHTML={{
               __html: `${text}`,
             }}
           />
-          <div className="flex justify-between items-center w-full">
+          <div className="flex justify-between items-center w-full mt-[15px]">
             {data !== null && (
               <div className=" w-max text-[13px]  px-4 py-2 flex gap-[10px] items-center">
-                <h6 className="capitalize text-[#5b748d] text-[16px]">
+                <h6 className="capitalize text-[#5b748d] text-[16px] xl:text-[12px]">
                   {news_title}
                 </h6>
-                <span className="capitalize text-[#5b748d] text-[16px]">/</span>
-                <h6 className="capitalize text-[#5b748d] text-[16px]">
+                <span className="capitalize text-[#5b748d] text-[16px] xl:text-[12px]">
+                  /
+                </span>
+                <h6 className="capitalize text-[#5b748d] text-[16px] xl:text-[12px]">
                   {data}
                 </h6>
               </div>

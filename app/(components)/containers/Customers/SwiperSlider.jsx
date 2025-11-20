@@ -60,7 +60,7 @@ const SwiperSlider = ({ customers }) => {
           >
             <div className="relative  flex flex-col  ">
               <Image
-                className="absolute top-[20px] left-[20px] z-20"
+                className="absolute top-[20px] 2xl:top-[10px] 2xl:left-[10px] left-[20px] z-20"
                 width={15}
                 height={13}
                 alt={cur?.name}
@@ -68,8 +68,8 @@ const SwiperSlider = ({ customers }) => {
               />
               <div className=" flex flex-col rounded-[20px] bg_card1">
                 <span className="bg-[#009ade] w-[24px] h-[24px] rounded-full absolute z-50 left-[50%] translate-x-[-50%] bottom-[-10px]"></span>
-                <div className="bg_card2 p-[40px]">
-                  <p className="text-[14px] text-[#002d74] text-center">
+                <div className="bg_card2 p-[40px] 2xl:p-[20px]">
+                  <p className="text-[14px] xl:text-[12px] text-[#002d74] text-center">
                     {cur?.text_long}
                   </p>
                 </div>
@@ -88,14 +88,14 @@ const SwiperSlider = ({ customers }) => {
       </Swiper>
       <button
         onClick={handlePrev}
-        className="absolute top-1/2 left-[100px] translate-y-[57%] z-10 w-[35px] h-[35px] bg-white rounded-full flex items-center justify-center shadow-md border border-[#009ade] transition-colors duration-300"
+        className="absolute top-1/2 lg:top-[80%] left-[100px] 2xl:left-[30px] translate-y-[57%] z-10 w-[35px] h-[35px] bg-white rounded-full flex items-center justify-center shadow-md border border-[#009ade] transition-colors duration-300"
       >
         <ArrowIcon className="w-6 h-6 text-blue-500 transform rotate-180" />
       </button>
 
       <button
         onClick={handleNext}
-        className="absolute top-1/2 right-[100px] translate-y-[57%] z-10 w-[35px] h-[35px] bg-white rounded-full flex items-center justify-center shadow-md border border-[#009ade] hover:bg-gray-100 transition-colors duration-300"
+        className="absolute top-1/2 lg:top-[80%]  right-[100px] 2xl:right-[30px] translate-y-[57%] z-10 w-[35px] h-[35px] bg-white rounded-full flex items-center justify-center shadow-md border border-[#009ade] hover:bg-gray-100 transition-colors duration-300"
       >
         <ArrowIcon className="w-6 h-6 text-blue-500" />
       </button>

@@ -13,7 +13,7 @@ const News = ({
 }) => {
   return (
     <>
-      <section className=" mt-[250px] mb-[100px] ">
+      <section className=" mt-[250px] 2xl:mt-[200px] lg:mt-[180px] md:mt-[120px] lg:px-[20px] mb-[100px] ">
         <MaxWidth>
           <BredcumPages name={header_13_text} longtext={count1} />
           <div className="grid grid-cols-12 gap-6 pt-10">

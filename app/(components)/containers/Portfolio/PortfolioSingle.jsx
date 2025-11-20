@@ -14,7 +14,7 @@ const PortfolioSingle = ({
   header_5_text,
 }) => {
   return (
-    <section className=" mt-[250px] mb-[40px]">
+    <section className=" mt-[250px] 2xl:mt-[200px] lg:mt-[180px] md:mt-[120px] mb-[40px] lg:px-[20px]">
       <MaxWidth>
         <div className="flex flex-col">
           <Image
@@ -22,19 +22,19 @@ const PortfolioSingle = ({
             height={400}
             alt={media?.title}
             src={`${process.env.NEXT_PUBLIC_PICTURE}/${media?.image}`}
-            className="h-[400px] object-cover"
+            className="h-[400px] lg:h-[250px] object-cover rounded-[20px]"
           />
-          <div className="flex justify-between items-center mt-[20px]">
-            <h3 className="text-[24px] font-semibold text-[#002d74]">
+          <div className="flex justify-between items-center mt-[20px] lg:flex-col">
+            <h3 className="text-[24px] lg:text-[20px] lg:mt-[20px] font-semibold text-[#002d74]">
               {media?.title}
             </h3>
-            <span className="bg-[#009ade] px-[20px] py-[12px] text-center text-white text-[14px] rounded-[70px]">
+            <span className="bg-[#009ade] lg:order-[-1] px-[20px] py-[12px] text-center text-white text-[14px] rounded-[70px]">
               {media?.tag}
             </span>
           </div>
 
           <div
-            className="text-center text-[16px] text-[#002d74] mt-[40px]"
+            className="text-center text-[16px] text-[#002d74] mt-[40px] lg:mt-[20px]"
             dangerouslySetInnerHTML={{ __html: `${media?.long_text}` }}
           />
         </div>

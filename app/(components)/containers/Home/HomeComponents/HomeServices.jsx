@@ -4,7 +4,7 @@ import MaxWidth from "@/app/(components)/MaxWidth/MaxWidth";
 
 const HomeServices = ({ data, data_translate, params }) => {
   return (
-    <section className="mt-[80px] ">
+    <section className="mt-[80px] md:px-[20px]">
       <MaxWidth>
         <Bredcump
           name={data_translate?.service}

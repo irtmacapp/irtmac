@@ -489,7 +489,7 @@ html.active {
   align-items: center;
   cursor: pointer;
   justify-content: space-between;
-  background-color: #f7f7fa;
+  background-color: #f0f6f9;
   transition: 0.3s;
 }
 
@@ -513,7 +513,7 @@ html.active {
 }
 
 .rc-accordion-card {
-  border: 1px solid #ddd;
+
   border-radius: 20px;
   margin-bottom: 16px;
   overflow: hidden;
@@ -880,9 +880,9 @@ div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm {
 }
 
 .cta:before {
-  content: "";
+
   position: absolute;
-  top: 4px;
+
   left: 0;
   display: block;
   border-radius: 50px;
@@ -895,7 +895,7 @@ div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm {
 .cta span {
   position: relative;
 
-  font-size: 18px;
+
 
   letter-spacing: 0.05em;
   color: #5b748d;

@@ -17,13 +17,13 @@ const BlogItem = ({
 }) => {
   return (
     <>
-      <section className="mt-[250px] mb-[100px]">
+      <section className="mt-[250px] 2xl:mt-[200px] lg:mt-[180px] md:mt-[120px] lg:px-[20px] mb-[100px]">
         <MaxWidth>
           <h3 className="text-[#003B71] font-semibold text-[32px] lg:text-[20px] text-center mb-10 lg:mb-0 ">
             {data?.name}
           </h3>
           <div
-            className="text-[#002d74] text-[18px] text-center"
+            className="text-[#002d74] text-[18px] lg:text-[15px] lg:mt-[30px] text-center"
             dangerouslySetInnerHTML={{
               __html: `${data?.text}`,
             }}

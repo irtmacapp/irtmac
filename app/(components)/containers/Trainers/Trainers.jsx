@@ -4,7 +4,7 @@ import TrainersData from "../../global_containers/TrainersData/TrainersData";
 
 const Trainers = ({ data, trainers_short, trainers_long, seemore, params }) => {
   return (
-    <section className="my-[85px] ">
+    <section className="my-[85px] lg:px-[20px]">
       <MaxWidth>
         <Bredcump
           name={trainers_short}

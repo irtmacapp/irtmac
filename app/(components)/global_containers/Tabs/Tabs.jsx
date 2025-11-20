@@ -67,30 +67,17 @@ const SharedTabs = ({
     <div className="flex flex-col ">
       <div className={`${customStyle}`} ref={tabsContainerRef}>
         <div className="flex items-center justify-center relative  gap-[24px]">
-          {/* Slider Elementi */}
-          <span
-            aria-hidden="true"
-            className={`absolute top-0 ${activeTabClass} transition-all duration-350 ease-in-out`}
-            style={{
-              left: `${sliderStyle.left}px`,
-              width: `${sliderStyle.width}px`,
-              height: `${sliderStyle.height}px`,
-              opacity: sliderStyle.opacity,
-              zIndex: 0,
-            }}
-          />
-          {/* Sekme Butonlarını Dinamik Olarak Oluşturma */}
-          <div className="flex items-center justify-center relative gap-[24px]">
+          <div className="flex items-center justify-center relative gap-[24px] lg:gap-0  lg:flex-col">
             {tabs?.map((tab, index) => (
               <button
-                key={tab.id || index}
+                key={tab?.id || index}
                 ref={(el) => (tabRefs.current[index] = el)} // Ref'i diziye ata
                 onClick={() => setActiveTabIndex(index)}
-                className={`${h2Class} ${
+                className={`lg:mb-[10px] ${h2Class} ${
                   activeTabIndex === index ? activeColor : nonActiveColor
                 } relative z-10  transition-colors duration-300 ease-in-out`}
               >
-                {tab.name}
+                {tab?.name}
               </button>
             ))}
           </div>
@@ -98,17 +85,17 @@ const SharedTabs = ({
       </div>
 
       {/* Sekme İçeriklerini Dinamik Olarak Oluşturma */}
-      <div className="mt-[40px]">
-        {tabs.map((tab, index) => (
+      <div className="mt-[40px] lg:mt-[20px]">
+        {tabs?.map((tab, index) => (
           <div
-            key={tab.id || index}
+            key={tab?.id || index}
             className={`transition-all duration-500 ease-in-out grid grid-cols-12 borders ${
               activeTabIndex === index
                 ? "opacity-100 visible"
                 : "opacity-0 max-h-0 invisible overflow-hidden"
             }`}
           >
-            {tab.content}
+            {tab?.content}
           </div>
         ))}
       </div>
